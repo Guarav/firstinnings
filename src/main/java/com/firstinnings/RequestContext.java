@@ -47,4 +47,14 @@ public class RequestContext {
     public void setRoles(List<String> roles) {
         this.roles = roles;
     }
+
+    @Override
+    public String toString() {
+        return "RequestContext{" +
+                "userName='" + userName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", roles=" + roles +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }

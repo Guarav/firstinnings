@@ -28,22 +28,22 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 
         // this is the check to make sure that we do not apply this filter in login page case.
-        if (((HttpServletRequest) servletRequest).getRequestURI().contains("login")) {
-            return;
+        if (!((HttpServletRequest) servletRequest).getRequestURI().contains("login")) {
+
+            // Retrieve the user id from the session.
+            HttpSession httpSession = httpServletRequest.getSession();
+
+            Object userId = httpSession.getAttribute("userId");
+            if (userId != null) {
+                RequestContext requestContext = new RequestContext();
+                requestContext.setUserId(userId.toString());
+                httpServletRequest.setAttribute("requestContext", requestContext);
+
+            } else {
+                httpServletResponse.sendRedirect("/firstinnings/login");
+            }
         }
 
-        // Retrieve the user id from the session.
-        HttpSession httpSession = httpServletRequest.getSession();
-
-        Object userId = httpSession.getAttribute("userId");
-        if (userId != null) {
-            RequestContext requestContext = new RequestContext();
-            requestContext.setUserId(userId.toString());
-            httpServletRequest.setAttribute("requestContext", requestContext);
-
-        } else {
-            httpServletResponse.sendRedirect("/firstinnings/login");
-        }
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
