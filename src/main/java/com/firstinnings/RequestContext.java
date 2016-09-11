@@ -3,6 +3,7 @@ package com.firstinnings;
 import java.util.List;
 
 /**
+ * Request context for the user logged in.
  * Created by poplig on 9/11/16.
  */
 public class RequestContext {

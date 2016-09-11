@@ -1,15 +1,17 @@
 package com.firstinnings.filters;
 
-import com.firstinnings.RequestContext;
+import java.io.IOException;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+
+import com.firstinnings.RequestContext;
 
 /**
- * Created by poplig on 9/3/16.
+ * Authentication filter that runs on every request and depending on whether the user is valid or
+ * not, redirect to home or login page. Created by poplig on 9/3/16.
  */
 public class AuthenticationFilter implements Filter {
 
@@ -24,16 +26,22 @@ public class AuthenticationFilter implements Filter {
 
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
+
+        // this is the check to make sure that we do not apply this filter in login page case.
+        if (((HttpServletRequest) servletRequest).getRequestURI().contains("login")) {
+            return;
+        }
+
+        // Retrieve the user id from the session.
         HttpSession httpSession = httpServletRequest.getSession();
 
         Object userId = httpSession.getAttribute("userId");
-        System.out.println("gaurav " + userId);
         if (userId != null) {
             RequestContext requestContext = new RequestContext();
             requestContext.setUserId(userId.toString());
             httpServletRequest.setAttribute("requestContext", requestContext);
 
-        } else if (!((HttpServletRequest) servletRequest).getRequestURI().contains("login")) {
+        } else {
             httpServletResponse.sendRedirect("/firstinnings/login");
         }
         filterChain.doFilter(servletRequest, servletResponse);
