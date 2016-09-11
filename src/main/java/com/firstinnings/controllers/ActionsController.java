@@ -35,5 +35,16 @@ public class ActionsController {
         return "UpdateMember";
     }
 
+    /**
+     * Renew member render.
+     * @param model
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/renewMember")
+    public String renewMember(ModelMap model) {
+
+        return "RenewMember";
+    }
+
 
 }

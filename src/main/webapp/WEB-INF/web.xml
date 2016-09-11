@@ -56,4 +56,9 @@
         <servlet-name>mvc-dispatcher</servlet-name>
         <url-pattern>/updateMember</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/renewMember</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -4,11 +4,8 @@
     body {
         background-image: url("https://s16.postimg.org/6ufcbft5h/Running1.jpg") ;
         background-repeat: no-repeat;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
         background-size: cover;
-        background-attachment: scroll;
+        background-attachment: fixed;
     }
 
     .search {
@@ -40,7 +37,7 @@
 
     form {
 
-        position: relative;
+        position: absolute;
         /*top: 0px;*/
         left: 500px;
     }
@@ -66,22 +63,22 @@
 <div class="row">
     <br /><br  /><br />
     <label for="name" style="color: white">Name:</label><br /><br />
-    <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+    <input id="name" class="input" name="name" type="text" value="" size="30" /><br /><br />
 </div>
 
-<p class="or"> OR</p>
+<p class="or"> OR </p>
 
 <div class="row">
-     <br /><br /><br />
+     <br />
      <label for="phone" style="color: white">Phone Number:</label><br /><br />
      <input id="phone" class="input" name="phone" type="text" value="" size="30" /><br />
 </div>
 
 <br />
-<input id="submit_button" type="submit" value="Update" style="font-size: 60px"/>
+<input id="submit_button" type="submit" value="Update" style="font-size: 100%"/>
 </form>
 
-    <a href="login.jsp" class="button">Home</a>
+    <a href="index.html" class="button">Home</a>
 
 </body>
 </html>
