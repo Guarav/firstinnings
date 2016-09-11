@@ -1,6 +1,14 @@
 package com.firstinnings.controllers;
 
-import org.springframework.session.Session;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import com.firstinnings.dto.Login;
+import com.firstinnings.repositories.LoginRepository;
 
 /**
  * Authentication controller that will handle the get and post methods of login page.
@@ -19,6 +25,19 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class AuthenticationController {
+
+    private Map<String, String> userPassData = new HashMap<String, String>() {
+
+                                                 {
+                                                     put("Gaurav", "Popli");
+                                                     put("Rahul", "Kumar");
+                                                     put("Akshay", "Kumar");
+                                                     put("Manoj", "Popli");
+                                                 }
+                                             };
+
+    @Autowired
+    private LoginRepository     loginRepository;
 
     /**
      * This method is responsible for authenticating the request.
@@ -35,10 +54,14 @@ public class AuthenticationController {
 
         ModelAndView modelMap = new ModelAndView();
 
-        // Hard coding the values till we intergate with DB
-        if ("gaurav".equals(name) && "gaurav".equals(pass)) {
+        Login login = loginRepository.findOne(name);
+        // We don't need to store plain password (Once we will grow , we need to migrate all
+        // password to it's hash).
+
+        if (login != null && StringUtils.equals(pass,login.getPassword())) {
 
             HttpSession httpSession =  request.getSession();
+            // TODO: Generate a AuthToken (Need to think how can it be genarted) and add it into cookie.
             httpSession.setAttribute("userId", "1");
 
             response.sendRedirect("/firstinnings/home");
@@ -63,6 +86,10 @@ public class AuthenticationController {
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     public String render(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+        // Below line is just to have data into DB. Need to come up with plan location of DB. As
+        // this comes when local server came up. At this time DB is empty.
+        userPassData.forEach((username, password) -> loginRepository.save(new Login(username, password)));
+
         // see if we already authenticated.
         HttpSession httpSession1 = request.getSession();
         if(httpSession1.getAttribute("userId") != null) {
@@ -70,6 +97,5 @@ public class AuthenticationController {
         }
         return "login";
     }
-
 
 }
