@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.firstinnings.Constants;
 import com.firstinnings.dto.Login;
 import com.firstinnings.repositories.LoginRepository;
 
 /**
- * Authentication controller that will handle the get and post methods of login page.
- * Created by poplig on 9/3/16.
+ * Authentication controller that will handle the get and post methods of login page. Created by
+ * poplig on 9/3/16.
  */
 @Controller
 public class AuthenticationController {
@@ -58,13 +59,12 @@ public class AuthenticationController {
         // We don't need to store plain password (Once we will grow , we need to migrate all
         // password to it's hash).
 
-        if (login != null && StringUtils.equals(pass,login.getPassword())) {
+        if (login != null && StringUtils.equals(pass, login.getPassword())) {
 
-            HttpSession httpSession =  request.getSession();
-            // TODO: Generate a AuthToken (Need to think how can it be genarted) and add it into cookie.
+            HttpSession httpSession = request.getSession();
             httpSession.setAttribute("userId", "1");
 
-            response.sendRedirect("/firstinnings/home");
+            response.sendRedirect("/home");
 
         } else {
 
@@ -92,8 +92,8 @@ public class AuthenticationController {
 
         // see if we already authenticated.
         HttpSession httpSession1 = request.getSession();
-        if(httpSession1.getAttribute("userId") != null) {
-            response.sendRedirect("/firstinnings/home");
+        if (httpSession1.getAttribute("userId") != null) {
+            response.sendRedirect(Constants.Pages.HOME);
         }
         return "login";
     }

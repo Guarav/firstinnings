@@ -2,7 +2,10 @@ package com.firstinnings.filters;
 
 import java.io.IOException;
 
-import javax.servlet.*;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,12 +16,7 @@ import com.firstinnings.RequestContext;
  * Authentication filter that runs on every request and depending on whether the user is valid or
  * not, redirect to home or login page. Created by poplig on 9/3/16.
  */
-public class AuthenticationFilter implements Filter {
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
+public class AuthenticationFilter extends AbstractFilter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -26,6 +24,11 @@ public class AuthenticationFilter implements Filter {
 
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
+
+        if (!validateStaticRequest(httpServletRequest)) {
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
 
         // this is the check to make sure that we do not apply this filter in login page case.
         if (!((HttpServletRequest) servletRequest).getRequestURI().contains("login")) {
@@ -40,15 +43,11 @@ public class AuthenticationFilter implements Filter {
                 httpServletRequest.setAttribute("requestContext", requestContext);
 
             } else {
-                httpServletResponse.sendRedirect("/firstinnings/login");
+                httpServletResponse.sendRedirect("/login");
             }
         }
 
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
-    @Override
-    public void destroy() {
-
-    }
 }

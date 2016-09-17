@@ -1,34 +1,4 @@
-<!DOCTYPE html>
-<html>
-<style>
-    body {
-        background-image: url("https://s16.postimg.org/6ufcbft5h/Running1.jpg") ;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-    }
-
-    form {
-
-        position: absolute;
-        /*top: 0px;*/
-        left: 500px;
-    }
-
-    .button {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        padding:10px;
-        background-color: antiquewhite;
-        color: black;;
-        text-decoration:none;
-        border-radius: 10px;
-    }
-
-</style>
-
-<body>
+<jsp:include page="header.jsp" />
 
 
     <form id="contact_form" action="hello.jsp" method="POST" enctype="multipart/form-data">
@@ -92,5 +62,4 @@
 
     <a href="index.html" class="button">Home</a>
 
-</body>
-</html>
+<jsp:include page="footer.jsp" />

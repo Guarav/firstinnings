@@ -1,61 +1,4 @@
-<!DOCTYPE html>
-<html>
-<style>
-    body {
-        background-image: url("https://s16.postimg.org/6ufcbft5h/Running1.jpg") ;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-    }
-
-    .search {
-        color: white;
-        font-size: 20px;
-        position: absolute;
-        top: 10px;
-        left: 500px;
-
-    }
-
-    .search {
-        color: white;
-        font-size: 20px;
-        position: absolute;
-        top: 10px;
-        left: 500px;
-
-    }
-
-    .or {
-        color: white;
-        font-size: 20px;
-        position: absolute;
-        top: 100px;
-        left: 0px;
-
-    }
-
-    form {
-
-        position: absolute;
-        /*top: 0px;*/
-        left: 500px;
-    }
-
-    .button {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        padding:10px;
-        background-color: antiquewhite;
-        color: black;;
-        text-decoration:none;
-        border-radius: 10px;
-    }
-
-</style>
-
-<body>
+<jsp:include page="header.jsp" />
 
 <p class="search"> Search by</p>
 
@@ -80,5 +23,4 @@
 
     <a href="index.html" class="button">Home</a>
 
-</body>
-</html>
+<jsp:include page="footer.jsp" />
