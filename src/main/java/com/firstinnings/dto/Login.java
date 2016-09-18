@@ -3,7 +3,8 @@ package com.firstinnings.dto;
 import org.springframework.data.annotation.Id;
 
 /**
- * Created by kumrahul on 9/11/16. It stores login information.
+ * Created by kumrahul on 9/11/16.
+ * It stores login information.
  */
 public class Login {
 

@@ -2,7 +2,7 @@
 
 
 
-<form id="contact_form" action="hello.jsp" method="POST" enctype="multipart/form-data">
+<form id="contact_form" method="POST">
     <div class="row">
         <br />
         <label for="name" style="color: white">Name:</label><br /><br />

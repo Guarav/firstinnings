@@ -2,7 +2,7 @@
 
 <p class="search"> Search by</p>
 
-    <form id="contact_form" action="hello.jsp" method="POST" enctype="multipart/form-data">
+    <form id="contact_form" method="POST">
 <div class="row">
     <br /><br  /><br />
     <label for="name" style="color: white">Name:</label><br /><br />
