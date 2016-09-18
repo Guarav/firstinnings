@@ -107,17 +107,6 @@ form {
     font-size: 20px;
 }
 
-.button {
-    position: absolute;
-    top: 10px;
-    left: 800px;
-    padding: 10px;
-    background-color: antiquewhite;
-    color: black;
-    text-decoration: none;
-    border-radius: 10px;
-}
-
 .search {
     color: white;
     font-size: 20px;
@@ -141,15 +130,4 @@ form {
     position: absolute;
     /*top: 0px;*/
     left: 500px;
-}
-
-.button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding:10px;
-    background-color: antiquewhite;
-    color: black;;
-    text-decoration:none;
-    border-radius: 10px;
 }

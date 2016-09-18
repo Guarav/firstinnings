@@ -12,4 +12,16 @@
     <link type="text/css" rel="stylesheet" href="/static/css/common.css" />
 </head>
 
+<head>
+    <meta charset="utf-8" />
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker();
+            $( "#format" ).change(function() {
+                $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+            });
+        });
+    </script>
+</head>
+
 <body>
