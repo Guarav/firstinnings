@@ -27,16 +27,6 @@ import com.firstinnings.repositories.LoginRepository;
 @Controller
 public class AuthenticationController {
 
-    private Map<String, String> userPassData = new HashMap<String, String>() {
-
-                                                 {
-                                                     put("Gaurav", "Popli");
-                                                     put("Rahul", "Kumar");
-                                                     put("Akshay", "Kumar");
-                                                     put("Manoj", "Popli");
-                                                 }
-                                             };
-
     @Autowired
     private LoginRepository     loginRepository;
 
@@ -85,10 +75,6 @@ public class AuthenticationController {
      */
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     public String render(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-        // Below line is just to have data into DB. Need to come up with plan location of DB. As
-        // this comes when local server came up. At this time DB is empty.
-        userPassData.forEach((username, password) -> loginRepository.save(new Login(username, password)));
 
         // see if we already authenticated.
         HttpSession httpSession1 = request.getSession();
