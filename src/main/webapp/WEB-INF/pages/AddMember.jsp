@@ -33,7 +33,7 @@
     <div class="row">
         <br />
         <label for="birth_date" style="color: white">Date of birth:</label>
-        <input id="datepicker" required class="input" name="birth_date" type="text" value="mm/dd/yyyy" size="30" /><br />
+        <input required class="input datepicker" name="birth_date" type="text" value="mm/dd/yyyy" size="30" /><br />
     </div>
     <div class="row">
         <br />
@@ -46,7 +46,7 @@
     <div class="row">
         <br />
         <label for="membership_date" style="color: white">Membership Date:</label>
-        <input id="datepicker" required class="input" name="membership_date" type="text" value="mm/dd/yyyy" size="30" /><br />
+        <input required class="input datepicker" name="membership_date" type="text" value="mm/dd/yyyy" size="30" /><br />
     </div>
     <div class="row">
         <br />
