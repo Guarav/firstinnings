@@ -2,12 +2,18 @@ package com.firstinnings.dto;
 
 import java.util.Map;
 
+import lombok.Getter;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by poplig on 9/18/16.
  * Class storing the details of a member.
  */
+@Getter
+@Document
 public class Member {
 
     @Id
@@ -15,12 +21,14 @@ public class Member {
 
     private String name;
 
+    @Indexed
     private String email;
 
     private String address;
 
     private String sex;
 
+    @Indexed
     private String phone;
 
     private String birthDate;
@@ -44,49 +52,5 @@ public class Member {
         this.placeJoining = details.get("place_joining");
         this.membershipMonths = Integer.valueOf(details.get("membership_months"));
         this.amountPaid = Integer.valueOf(details.get("amount_paid"));
-    }
-
-    public String getMemberId() {
-        return memberId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public String getMembershipDate() {
-        return membershipDate;
-    }
-
-    public String getPlaceJoining() {
-        return placeJoining;
-    }
-
-    public int getMembershipMonths() {
-        return membershipMonths;
-    }
-
-    public int getAmountPaid() {
-        return amountPaid;
     }
 }

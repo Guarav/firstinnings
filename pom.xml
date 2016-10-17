@@ -66,6 +66,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Lombok dependency -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.0</version>
+            <scope>provided</scope>
+        </dependency>
+
 
     </dependencies>
 
