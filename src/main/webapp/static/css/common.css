@@ -98,8 +98,18 @@ form {
 }
 
 .Input {
+
     width: 200px;
+
 }
+
+.label {
+    color: white;
+    width: 200px;
+    display: inline-block;
+    align-content: center;
+}
+
 
 .Submit {
     width: 8em;
