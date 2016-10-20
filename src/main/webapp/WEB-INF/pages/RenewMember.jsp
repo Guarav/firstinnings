@@ -3,40 +3,54 @@
 
 
 
-<form id="contact_form" method="POST">
+<form data-ng-controller="renew-member-controller" data-ng-init="init()" id="contact_form" method="POST">
+    Search By :
     <div class="row">
-        <br />
-        <label for="name" style="color: white">Name:</label><br /><br />
-        <input id="name" required class="input" name="phone" type="text" value="" size="30" /><br />
+        <label for="name" style="color: white">Phone:</label><br /><br />
+        <input data-ng-model="phone" data-ng-blur="findMember('phone',  phone)" class="input" type="text" value="" size="30" /><br />
     </div>
     <div class="row">
-        <br />
         <label for="membership_id" style="color: white">Membership ID:</label><br /><br />
-        <input id="membership_id" required class="input" name="membership_id" type="text" value="" size="30" /><br />
-    </div>
+        <input data-ng-model="id" id="membership_id" data-ng-blur="findMember('id', id)" class="input" type="text" value="" size="30" /><br />
     <div class="row">
+        <label for="renewal_date" style="color: white">EmailId:</label><br /><br />
+        <input id="renewal_date" data-ng-model="email" data-ng-blur="findMember('email', email)" class="input" value="" size="30" /><br />
+    </div>
     <br />
-    <label for="renewal_date" style="color: white">Renewal Date:</label><br /><br />
-    <input id="renewal_date" required class="input" name="renewal_date" type="date" value="" size="30" /><br />
-    </div>
-    <div class="row">
-        <br />
-        <label for="renewal_months" style="color: white">Months of renewal:</label><br /><br />
-        <input id="renewal_months" required class="input" name="renewal_months" type="text" value="" size="30" /><br />
-    </div>
-    <div class="row">
-        <br />
-        <label for="amount_paid" style="color: white">Amount paid</label><br /><br />
-        <input id="amount_paid" required class="input" name="amount_paid" type="text" value="" size="30" /><br />
+
+
+    <div style="color:white;" data-ng-show="members" >
+        <div data-ng-repeat="member in members">
+            <span>
+                <input type="radio" >
+                {{member.name}}, {{member.email}} {{member.address}}
+            </span>
+        </div>
+
+        <div class="row">
+            <label for="renewal_date" style="color: white">Renewal date:</label><br /><br />
+            <input id="renewal_date" required class="input" name="renewal_date" value="" size="30" /><br />
+        </div>
+
+        <div class="row">
+            <br />
+            <label for="membership_months" class="label">Months of membership:</label>
+            <input id="membership_months" required class="input" name="membership_months" type="text" value="" size="30" /><br />
+        </div>
+        <div class="row">
+            <br />
+            <label for="amount_paid" class="label">Amount paid:</label>
+            <input id="amount_paid" required class="input" name="amount_paid" type="text" value="" size="30" /><br />
+        </div>
+
+        <input id="submit_button" type="submit" value="Renew" style="font-size: 100%"/>
+
     </div>
 
-    <br />
-    <input id="submit_button" type="submit" value="Update" style="font-size: 100%"/>
+
+
 </form>
 
-<c:if test="${!empty member }">
-    <h1>${member}</h1>
-</c:if>
 
 <a href="index.html" class="button">Home</a>
 

@@ -7,15 +7,19 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.firstinnings.accessor.MongoAccessor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.firstinnings.dto.Member;
@@ -103,25 +107,24 @@ public class ActionsController {
      * @param request
      * @return
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/renewMember")
-    public ModelAndView renewMemberSubmit(HttpServletRequest request) {
+    @RequestMapping(method = RequestMethod.POST, value = "/findMember")
+    public @ResponseBody Map findMember(@RequestParam("medium") String medium, @RequestParam("value") String value) {
 
-        String phone = request.getParameter("phone");
-        ModelAndView modelAndView = new ModelAndView();
-        if(request.getParameter("phone") != null) {
+
+        System.out.println("in gaurav " + medium);
+        Map<String, Object> response = new HashMap<>();
+        if(StringUtils.equals(medium, "phone")) {
 
             // Search for phone
-            Member member = repository.findByPhone(phone);
+            Member member = repository.findByPhone(value);
+            System.out.println("member before " + member);
             if(member != null) {
                 System.out.println("member found " + member);
-                modelAndView.addObject("member", member);
+                response.put("member", member);
             }
         }
 
-
-        modelAndView.setViewName("RenewMember");
-
-        return modelAndView;
+        return response;
     }
 
 }
