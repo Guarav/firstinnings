@@ -9,4 +9,12 @@ import org.springframework.stereotype.Repository;
  * Created by poplig on 9/18/16.
  */
 @Repository
-public interface MemberRepository extends MongoRepository<Member, String> {}
+public interface MemberRepository extends MongoRepository<Member, String> {
+
+    Member findByPhone(String phone);
+
+    Member findByEmail();
+
+    Member findAllByPlaceJoining();
+
+}

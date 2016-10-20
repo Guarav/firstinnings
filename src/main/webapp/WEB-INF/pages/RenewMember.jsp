@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp" />
 
 
@@ -6,7 +7,7 @@
     <div class="row">
         <br />
         <label for="name" style="color: white">Name:</label><br /><br />
-        <input id="name" required class="input" name="name" type="text" value="" size="30" /><br />
+        <input id="name" required class="input" name="phone" type="text" value="" size="30" /><br />
     </div>
     <div class="row">
         <br />
@@ -32,6 +33,10 @@
     <br />
     <input id="submit_button" type="submit" value="Update" style="font-size: 100%"/>
 </form>
+
+<c:if test="${!empty member }">
+    <h1>${member}</h1>
+</c:if>
 
 <a href="index.html" class="button">Home</a>
 

@@ -94,7 +94,7 @@ form {
 
     position: relative;
     top: 55px;
-    left: 500px;
+    left: 33%;
 }
 
 .Input {
@@ -113,7 +113,6 @@ form {
 
 .Submit {
     width: 8em;
-    height: 20em;
     font-size: 20px;
 }
 
@@ -135,9 +134,7 @@ form {
 
 }
 
-form {
-
-    position: absolute;
-    /*top: 0px;*/
-    left: 500px;
+.message {
+    margin-left: 10%;
+    margin-right: 10%;
 }
