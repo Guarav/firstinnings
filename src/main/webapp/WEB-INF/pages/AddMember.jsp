@@ -1,6 +1,6 @@
 <jsp:include page="header.jsp" />
 
-<form id="contact_form" method="post">
+<form id="contact_form" method="post" action="/addAMember">
     <div class="row">
         <br />
         <label for="name" class="label" >Name:</label>

@@ -3,7 +3,7 @@
 
 
 
-<form data-ng-controller="renew-member-controller" data-ng-init="init()" id="contact_form" method="POST">
+<form data-ng-controller="renew-member-controller"  id="contact_form" method="POST" action="/renewMember">
     Search By :
     <div class="row">
         <label for="name" style="color: white">Phone:</label><br /><br />
@@ -11,10 +11,11 @@
     </div>
     <div class="row">
         <label for="membership_id" style="color: white">Membership ID:</label><br /><br />
-        <input data-ng-model="id" id="membership_id" data-ng-blur="findMember('id', id)" class="input" type="text" value="" size="30" /><br />
+        <input data-ng-model="id" data-ng-blur="findMember('id', id)" class="input" type="text" value="" size="30" /><br />
+    </div>
     <div class="row">
         <label for="renewal_date" style="color: white">EmailId:</label><br /><br />
-        <input id="renewal_date" data-ng-model="email" data-ng-blur="findMember('email', email)" class="input" value="" size="30" /><br />
+        <input data-ng-model="email" data-ng-blur="findMember('email', email)" class="input" value="" size="30" /><br />
     </div>
     <br />
 
@@ -22,14 +23,16 @@
     <div style="color:white;" data-ng-show="members" >
         <div data-ng-repeat="member in members">
             <span>
-                <input type="radio" >
+                <input data-ng-click="selectMember(member)" type="radio" >
                 {{member.name}}, {{member.email}} {{member.address}}
             </span>
         </div>
 
+        <input id="membership_id" name="memberId" type="hidden"/>
         <div class="row">
-            <label for="renewal_date" style="color: white">Renewal date:</label><br /><br />
-            <input id="renewal_date" required class="input" name="renewal_date" value="" size="30" /><br />
+            <br />
+            <label for="renewal_date" class="label">Renewal date:</label>
+            <input id="renewal_date" required class="input datepicker" name="renewal_date" value="" size="30" /><br />
         </div>
 
         <div class="row">
@@ -46,7 +49,6 @@
         <input id="submit_button" type="submit" value="Renew" style="font-size: 100%"/>
 
     </div>
-
 
 
 </form>
