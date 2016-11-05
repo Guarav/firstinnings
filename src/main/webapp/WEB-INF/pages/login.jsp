@@ -6,9 +6,9 @@
 
 
     <form action="/login" method="post">
-        <p>Username:<br></p>
+        <p>User:<br><br></p>
         <input class="Input" type="text" name="username" />
-        <br>
+        <br><br>
         <p>Password:<br></p>
         <input class="Input" type="password" name="password" />
         <br><br><br>
