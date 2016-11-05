@@ -34,6 +34,7 @@ public class AuthenticationController {
             put("Rahul", "Kumar");
             put("Akshay", "Kumar");
             put("Manoj", "Popli");
+            put("Esha", "Goel");
         }
     };
 

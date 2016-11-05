@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8"/>
     <link type="text/css" rel="stylesheet" href="/static/css/common.css"/>
-    <%--<link type="text/css" rel="stylesheet" href="/static/css/thirdparty.css"/>--%>
+    <link type="text/css" rel="stylesheet" href="/static/css/thirdparty.css"/>
     <link rel="stylesheet" href="/static/css/jquery-ui.css"/>
     <script src="/static/js/thirdparty/angular.js"> </script>
     <script src="/static/js/thirdparty/jquery.js"></script>
