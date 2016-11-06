@@ -8,24 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
-<%--<head>--%>
-    <%--<meta charset="utf-8">--%>
-    <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
-    <%--<title>jQuery UI Datepicker - Display month &amp; year menus</title>--%>
-    <%--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">--%>
-    <%--<link rel="stylesheet" href="/resources/demos/style.css">--%>
-    <%--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>--%>
-    <%--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--%>
-    <%--<script>--%>
-        <%--$( function() {--%>
-            <%--$( "#datepicker" ).datepicker({--%>
-                <%--changeMonth: true,--%>
-                <%--changeYear: true--%>
-            <%--});--%>
-        <%--} );--%>
-    <%--</script>--%>
-<%--</head>--%>
-
 
 <head>
     <meta charset="utf-8"/>
@@ -43,22 +25,14 @@
         $( function() {
             $( ".datepicker" ).datepicker({
                 changeMonth: true,
-                changeYear: true
+                changeYear: true,
+                dateFormat: "dd-mm-yy",
+//                minDate: "-70Y",
+//                maxDate: "20Y",
+                yearRange: "1950:2030"
             });
         } );
     </script>
-
-
-    <%--<script>--%>
-        <%--$(function () {--%>
-            <%--$(".datepicker").datepicker();--%>
-            <%--$("#format").change(function () {--%>
-                <%--$(".datepicker").datepicker();--%>
-<%--//                $(".datepicker").datepicker("option", "dateFormat", $(this).val());--%>
-            <%--});--%>
-        <%--});--%>
-
-    <%--</script>--%>
 
 </head>
 
