@@ -66,4 +66,10 @@
         <servlet-name>mvc-dispatcher</servlet-name>
         <url-pattern>/findMember</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/Writetous</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -80,6 +80,17 @@ form {
     border-radius: 10px;
 }
 
+.button1 {
+    position: absolute;
+    top: 10px;
+    left: 800px;
+    padding: 10px;
+    background-color: antiquewhite;
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
 h1 {
     color: white;
     font-size: 60px;

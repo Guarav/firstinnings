@@ -54,6 +54,19 @@ public class ActionsController {
     }
 
     /**
+     * Update member render.
+     * @param model
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/Writetous")
+    public String updateMember(ModelMap model) {
+
+        return "Writetous";
+    }
+
+
+
+    /**
      * Renew member render.
      * @return
      */
