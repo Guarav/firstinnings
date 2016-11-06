@@ -1,7 +1,7 @@
 <jsp:include page="header.jsp"/>
 
 
-<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+<form id="contact_form" class="form_member" action="#" method="POST" enctype="multipart/form-data">
     <div class="row">
         <br/>
         <label for="name" style="color: white">Your name:</label><br/><br/>
@@ -21,6 +21,6 @@
     <input id="submit_button" type="submit" value="Send email"/>
 </form>
 
-<a href="index.html" class="button">Home</a>
+<a href="/home" class="button">Home</a>
 
 <jsp:include page="footer.jsp"/>

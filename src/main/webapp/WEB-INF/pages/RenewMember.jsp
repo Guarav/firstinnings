@@ -2,19 +2,20 @@
 <jsp:include page="header.jsp" />
 
 
+<p class="search"> Search by</p>
 
-<form data-ng-controller="renew-member-controller"  id="contact_form" method="POST" action="/renewMember">
-    Search By :
+<form data-ng-controller="renew-member-controller" class="form_member" id="contact_form" method="POST" action="/renewMember">
+
     <div class="row">
-        <label for="name" style="color: white">Phone:</label><br /><br />
+        <br /><label for="name" style="color: white">Phone:</label><br />
         <input data-ng-model="phone" data-ng-blur="findMember('phone',  phone)" class="input" type="text" value="" size="30" /><br />
     </div>
     <div class="row">
-        <label for="membership_id" style="color: white">Membership ID:</label><br /><br />
+        <br /><label for="membership_id" style="color: white">Membership ID:</label><br />
         <input data-ng-model="id" data-ng-blur="findMember('id', id)" class="input" type="text" value="" size="30" /><br />
     </div>
     <div class="row">
-        <label for="renewal_date" style="color: white">EmailId:</label><br /><br />
+       <br /> <label for="renewal_date" style="color: white">Email Id:</label><br />
         <input data-ng-model="email" data-ng-blur="findMember('email', email)" class="input" value="" size="30" /><br />
     </div>
     <br />
@@ -54,6 +55,6 @@
 </form>
 
 
-<a href="index.html" class="button">Home</a>
+<a href="/home" class="button">Home</a>
 
 <jsp:include page="footer.jsp" />

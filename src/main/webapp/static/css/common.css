@@ -5,10 +5,10 @@ body {
     background-attachment: fixed;
 }
 
-form {
+.form_login {
 
     position: absolute;
-    /*top: 0px;*/
+    top: 155px;
     left: 500px;
 }
 
@@ -23,12 +23,12 @@ form {
     border-radius: 10px;
 }
 
-form {
+/*form {*/
 
-    position: relative;
-    top: 155px;
-    left: 100px;
-}
+    /*position: relative;*/
+    /*top: 155px;*/
+    /*left: 100px;*/
+/*}*/
 
 .AddMember {
     position: absolute;
@@ -36,7 +36,7 @@ form {
     left: 100px;
     padding: 50px;
     background-color: darkgrey;
-    color: black;
+    color: #000000;
     font-style: oblique;
     font-size: 20px;
     text-decoration: none;
@@ -101,9 +101,9 @@ p {
     font-size: 20px;
 }
 
-form {
+.form_member {
 
-    position: relative;
+    position: absolute;
     top: 55px;
     left: 33%;
 }
@@ -131,8 +131,8 @@ form {
     color: white;
     font-size: 20px;
     position: absolute;
-    top: 10px;
-    left: 500px;
+    top: 40px;
+    left: 33%;
 
 }
 
@@ -140,7 +140,7 @@ form {
     color: white;
     font-size: 20px;
     position: absolute;
-    top: 100px;
+    top: 160px;
     left: 0px;
 
 }

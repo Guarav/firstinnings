@@ -1,6 +1,6 @@
 <jsp:include page="header.jsp" />
 
-<form id="contact_form" method="post" action="/addAMember">
+<form id="contact_form" class="form_member" method="post" action="/addAMember">
     <div class="row">
         <br />
         <label for="name" class="label" >Name:</label>
@@ -67,6 +67,6 @@
     <input id="submit_button" type="submit" value="Add" style="font-size: 100%"/>
 </form>
 
-<a href="index.html" class="button">Home</a>
+<a href="/home" class="button">Home</a>
 
 <jsp:include page="footer.jsp" />

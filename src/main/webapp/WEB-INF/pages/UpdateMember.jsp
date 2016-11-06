@@ -2,25 +2,25 @@
 
 <p class="search"> Search by</p>
 
-    <form id="contact_form" method="POST">
+    <form id="contact_form" class="form_member" method="POST">
 <div class="row">
     <br /><br  /><br />
-    <label for="name" style="color: white">Name:</label><br /><br />
-    <input id="name" class="input" name="name" type="text" value="" size="30" /><br /><br />
+    <label for="name" style="color: white">Name:</label><br />
+    <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
 </div>
 
 <p class="or"> OR </p>
 
 <div class="row">
-     <br />
-     <label for="phone" style="color: white">Phone Number:</label><br /><br />
+     <br /><br /><br /><br />
+     <label for="phone" style="color: white">Phone Number:</label><br />
      <input id="phone" class="input" name="phone" type="text" value="" size="30" /><br />
 </div>
 
-<br />
-<input id="submit_button" type="submit" value="Update" style="font-size: 100%"/>
+<br /><br />
+<input id="submit_button" type="submit" value="Search" style="font-size: 100%"/>
 </form>
 
-    <a href="index.html" class="button">Home</a>
+    <a href="/home" class="button">Home</a>
 
 <jsp:include page="footer.jsp" />

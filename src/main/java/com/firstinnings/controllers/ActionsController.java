@@ -59,7 +59,7 @@ public class ActionsController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, value = "/Writetous")
-    public String updateMember(ModelMap model) {
+    public String Writetous(ModelMap model) {
 
         return "Writetous";
     }
