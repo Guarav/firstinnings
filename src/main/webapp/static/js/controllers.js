@@ -11,6 +11,8 @@ firstinnings.controller('renew-member-controller', ['$scope', 'httpService', fun
             .success(function(response){
                 if(response.member) {
                     $scope.members = [response.member];
+                } else {
+                    $scope.members = null;
                 }
             })
             .error(function(response) {
