@@ -1,7 +1,7 @@
 <jsp:include page="header.jsp"/>
 
 
-<form id="contact_form" class="form_member" action="#" method="POST" enctype="multipart/form-data">
+<form id="contact_form" class="form_member" action="/Writetous" method="POST" enctype="multipart/form-data">
     <div class="row">
         <br/>
         <label for="name" style="color: white">Your name:</label><br/><br/>
