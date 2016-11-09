@@ -67,80 +67,6 @@ public class ActionsController {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/Writetous")
     public String Writetous1(ModelMap model) {
-        // String fromAddress = "esha90@gmail.com";//Your Email Address//
-        // String addressedTo = "esha90@gmail.com";
-        // String recipients = addressedTo.trim();
-        // String contentType = "text/plain";
-        // String smtpHost = "smtp.gmail.com";//Your Outgoing Mailbox//
-        // int smtpPort = 587;
-        // String username = "esha90@gmail.com";//Your Mailbox Username//
-        // String password = "#";//Your Mailbox Password//
-        //
-        // try
-        // {
-        // Properties props = System.getProperties();
-        // props.put("mail.smtp.starttls.enable", "true");
-        // Session session = Session.getDefaultInstance(props);
-        //
-        // MimeMessage message = new MimeMessage(session);
-        //
-        // message.setFrom(new InternetAddress(fromAddress));
-        // message.setRecipients(javax.mail.Message.RecipientType.TO,
-        // InternetAddress.parse(recipients, false));
-        //
-        // String subject = "hi";
-        // message.setSubject(subject);
-        // String content = "how are you";
-        // message.setContent(content, contentType);
-        // message.setSentDate(new Date());
-        //
-        // Transport transport = session.getTransport("smtp");
-        // transport.connect(smtpHost, smtpPort, username, password);
-        // transport.sendMessage(message, message.getAllRecipients());
-        // transport.close();
-        //
-        // // return true;
-        // } catch (MessagingException messagingException)
-        // {
-        // System.out.print(messagingException);
-        // // return false;
-        //
-        // } catch (Exception e)
-        // {
-        // System.out.print(e);
-        // // return false;
-        // }
-
-        // Properties props = new Properties();
-        // props.put("mail.smtp.host", "smtp.gmail.com");
-        // props.put("mail.smtp.port", "465");
-        // props.put("mail.smtp.auth", "true");
-        // props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        //
-        // try {
-        //
-        // Authenticator auth = new SMTPAuthenticator();
-        //
-        // Session session = Session.getInstance(props);
-        // MimeMessage msg = new MimeMessage(session);
-        // msg.setSubject("Open");
-        // msg.setFrom(new InternetAddress("esha90@gmail.com"));
-        // msg.setRecipient(javax.mail.Message.RecipientType.TO, new
-        // InternetAddress("esha90@gmail.com"));
-        // msg.setText("How are you");
-        // Transport.send(msg);
-        // System.out.println("Mail Delivered......");
-        // } catch (Exception e) {
-        // // TODO: handle exception
-        // e.printStackTrace();
-        // }
-        //
-        //
-        // class SMTPAuthenticator extends Authenticator{
-        // public PasswordAuthentication getPasswordAuthentication(){
-        // return new PasswordAuthentication("esha90@gmail.com","#");
-        // }
-        // }
 
         final String username = "abeygaurav@gmail.com";
         final String password = "##";
@@ -162,7 +88,7 @@ public class ActionsController {
 
             javax.mail.Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("esha90@gmail.com"));
-            message.setRecipients(javax.mail.Message.RecipientType.TO, InternetAddress.parse("esha90@gmail.com"));
+            message.setRecipients(javax.mail.Message.RecipientType.TO, InternetAddress.parse("abeygaurav@gmail.com"));
             message.setSubject("Testing Subject");
             message.setText("Dear Mail Crawler," + "\n\n No spam to my email, please!");
 
