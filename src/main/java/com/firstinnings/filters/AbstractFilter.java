@@ -28,7 +28,7 @@ public abstract class AbstractFilter implements Filter {
     public boolean validateStaticRequest(HttpServletRequest request) {
 
         String path = ((HttpServletRequest) request).getRequestURI();
-        if(path.startsWith("/static") || path.startsWith("/favicon")) {
+        if(path.startsWith("/static") || path.startsWith("/favicon") || path.startsWith("/Writetous")) {
             return false;
         }
         return true;

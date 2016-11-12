@@ -1,7 +1,5 @@
 package com.firstinnings.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.MessagingException;
@@ -9,20 +7,16 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.firstinnings.accessor.MongoAccessor;
-import com.firstinnings.dto.Member;
 import com.firstinnings.repositories.MemberRepository;
+import com.firstinnings.repositories.RenewRepository;
 
 /**
  * This controller handles the actions or operations that can be possible for the user to do. This
@@ -33,7 +27,9 @@ import com.firstinnings.repositories.MemberRepository;
 public class ActionsController {
 
     @Autowired
-    private MemberRepository repository;
+    private MemberRepository memberRepository;
+
+    private RenewRepository  renewRepository;
 
     @Autowired
     private MongoAccessor    mongoAccessor;
@@ -101,50 +97,6 @@ public class ActionsController {
         }
 
         return "Writetous";
-    }
-
-    /**
-     * Renew member render.
-     * @return
-     */
-    @RequestMapping(method = RequestMethod.GET, value = "/renewMember")
-    public String renewMember() {
-
-        return "RenewMember";
-    }
-
-    /**
-     * Handles renew member submit.
-     * @return
-     */
-    @RequestMapping(method = RequestMethod.POST, value = "/renewMember")
-    public String renewMemberSubmit(HttpServletRequest request) {
-
-        String memberId = request.getParameter("memberId");
-        return "RenewMember";
-    }
-
-    /**
-     * Renew member render.
-     * @return
-     */
-    @RequestMapping(method = RequestMethod.POST, value = "/findMember")
-    public @ResponseBody Map findMember(@RequestParam("medium") String medium, @RequestParam("value") String value) {
-
-        System.out.println("in gaurav " + medium);
-        Map<String, Object> response = new HashMap<>();
-        if (StringUtils.equals(medium, "phone")) {
-
-            // Search for phone
-            Member member = repository.findByPhone(value);
-            System.out.println("member before " + member);
-            if (member != null) {
-                System.out.println("member found " + member);
-                response.put("member", member);
-            }
-        }
-
-        return response;
     }
 
 }

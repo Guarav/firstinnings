@@ -1,27 +1,23 @@
+firstinnings.controller('renew-member-controller', ['$scope', 'httpService', function ($scope, httpService) {
 
-firstinnings.controller('renew-member-controller', ['$scope', 'httpService', function($scope, httpService) {
+    $scope.findMember = function () {
 
-    $scope.init = function() {
-    };
-
-    $scope.findMember = function(medium, value) {
-
-
-        httpService.post('/findMember', serializeData({medium : medium, value : value}))
-            .success(function(response){
-                if(response.member) {
+        httpService.post('/findMember', serializeData({medium: $scope.medium, value: $scope.value}))
+            .success(function (response) {
+                if (response.member) {
                     $scope.members = [response.member];
                 } else {
                     $scope.members = null;
+                    $scope.errorMessage = "No results found";
                 }
             })
-            .error(function(response) {
+            .error(function (response) {
 
             })
 
     };
 
-    $scope.selectMember = function(member) {
+    $scope.selectMember = function (member) {
         $('#membership_id').val(member.memberId)
     };
 

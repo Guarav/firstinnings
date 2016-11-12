@@ -56,7 +56,7 @@ public class AddMemberController {
             repository.save(new Member(allParameterDetails));
             modelAndView.addObject("message", new Message("The details have been successfully added.",
                     Message.Status.SUCCESS));
-            modelAndView.setViewName("home");
+            modelAndView.setViewName("AddMember");
         } catch (Exception e) {
             modelAndView.addObject("message", new Message("The details could not be saved. Please try again.",
                     Message.Status.ERROR));
