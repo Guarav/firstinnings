@@ -7,19 +7,14 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.firstinnings.accessor.MongoAccessor;
-import com.firstinnings.dto.Member;
-import com.firstinnings.dto.Message;
 import com.firstinnings.repositories.MemberRepository;
 import com.firstinnings.repositories.RenewRepository;
 
@@ -48,30 +43,6 @@ public class ActionsController {
     public String updateMember(ModelMap model) {
 
         return "UpdateMember";
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/searchMember")
-    public ModelAndView searchMember(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView();
-        final String phoneNumber = request.getParameter("phone");
-        final String name = request.getParameter("name");
-
-        Member member = null;
-        if (StringUtils.isNotBlank(phoneNumber) && StringUtils.isNotBlank(name)) {
-            modelAndView.addObject("message",
-                    new Message("Please provide one of phone number or name.", Message.Status.ERROR));
-        } else if (StringUtils.isBlank(phoneNumber) && StringUtils.isBlank(name)) {
-            modelAndView.addObject("message", new Message("phone number and name both empty", Message.Status.ERROR));
-        } else if (StringUtils.isNotBlank(phoneNumber)) {
-            member = memberRepository.findByPhone(phoneNumber);
-        } else {
-            member = memberRepository.findByName(name);
-        }
-
-        // TODO: Need to verify whether list can come from search by Name.
-        modelAndView.addObject("member", member);
-        modelAndView.setViewName("UpdateMember");
-        return modelAndView;
     }
 
     /**
