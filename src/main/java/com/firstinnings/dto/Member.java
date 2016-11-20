@@ -3,11 +3,11 @@ package com.firstinnings.dto;
 import java.util.Date;
 import java.util.Map;
 
-import lombok.Getter;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.Getter;
 
 /**
  * Created by poplig on 9/18/16. Class storing the details of a member. This will stores the details
@@ -23,6 +23,7 @@ public class Member {
     @Id
     private String memberId;
 
+    @Indexed
     private String name;
 
     @Indexed
