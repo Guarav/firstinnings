@@ -1,26 +1,42 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp" />
 
+<br>
 <p class="search"> Search by</p>
 
-    <form id="contact_form" class="form_member" method="POST">
-<div class="row">
-    <br /><br  /><br />
-    <label for="name" style="color: white">Name:</label><br />
-    <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
-</div>
+<form data-ng-controller="update-member-controller" class="form_member" method="POST" action="/updateMember">
 
-<p class="or"> OR </p>
+    <select ng-model="medium">
+        <option value="">Search By:</option>
+        <option value="phone">Phone</option>
+        <option value="emailId">Email</option>
+        <option value="membershipId">Membership Id</option>
+    </select>
 
-<div class="row">
-     <br /><br /><br /><br />
-     <label for="phone" style="color: white">Phone Number:</label><br />
-     <input id="phone" class="input" name="phone" type="text" value="" size="30" /><br />
-</div>
+    <div class="row">
+        <br /><label for="name" style="color: white"></label><br />
+        <input data-ng-model="value" data-ng-blur="findMember()" class="input" type="text" value="" size="30" /><br />
+    </div>
 
-<br /><br />
-<input id="submit_button" type="submit" value="Search" style="font-size: 100%"/>
+    <br>
+
+    <div style="color:white;" data-ng-show="member" >
+
+        <jsp:include page="memberDetails.jsp" />
+        <input id="membership_id" name="memberId" type="hidden"/>
+
+        <input id="submit_button" type="submit" value="Renew" style="font-size: 100%"/>
+
+    </div>
+
+    <div data-ng-show="!members">
+        <span ng-model="errorMessage"></span>
+    </div>
+
+
 </form>
 
-    <a href="/home" class="button">Home</a>
+
+<a href="/home" class="button">Home</a>
 
 <jsp:include page="footer.jsp" />

@@ -26,25 +26,6 @@ import com.firstinnings.repositories.RenewRepository;
 @Controller
 public class ActionsController {
 
-    @Autowired
-    private MemberRepository memberRepository;
-
-    private RenewRepository  renewRepository;
-
-    @Autowired
-    private MongoAccessor    mongoAccessor;
-
-    /**
-     * Update member render.
-     * @param model
-     * @return
-     */
-    @RequestMapping(method = RequestMethod.GET, value = "/updateMember")
-    public String updateMember(ModelMap model) {
-
-        return "UpdateMember";
-    }
-
     /**
      * Update member render.
      * @param model

@@ -14,7 +14,7 @@
     </select>
 
     <div class="row">
-        <br /><label for="name" style="color: white">Phone:</label><br />
+        <br /><label for="name" style="color: white"></label><br />
         <input data-ng-model="value" data-ng-blur="findMember()" class="input" type="text" value="" size="30" /><br />
     </div>
 

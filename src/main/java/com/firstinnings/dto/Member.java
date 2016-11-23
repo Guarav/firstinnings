@@ -5,6 +5,7 @@ import java.util.Map;
 
 import lombok.Getter;
 
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -21,6 +22,7 @@ public class Member {
     private String currentDate;
 
     @Id
+    @Setter
     private String memberId;
 
     private String name;
@@ -36,6 +38,8 @@ public class Member {
     private String phone;
 
     private String birthDate;
+
+    private String maritalStatus;
 
     @Indexed
     private String membershipDate;
@@ -60,6 +64,7 @@ public class Member {
         this.phone = details.get("phone");
         this.birthDate = details.get("birth_date");
         this.membershipDate = details.get("membership_date");
+        this.maritalStatus = details.get("marital_status");
         this.placeJoining = details.get("place_joining");
         this.membershipMonths = Integer.valueOf(details.get("membership_months"));
         this.amountPaid = Integer.valueOf(details.get("amount_paid"));

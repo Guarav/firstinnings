@@ -81,11 +81,9 @@ public class RenewMemberController {
             renewRepository.save(renew);
             modelAndView.addObject("message", new Message("The details have been successfully added.",
                     Message.Status.SUCCESS));
-            modelAndView.setViewName("RenewMember");
         } catch (Exception e) {
             modelAndView.addObject("message", new Message("The details could not be saved. Please try again.",
                     Message.Status.ERROR));
-            modelAndView.setViewName("RenewMember");
 
         }
         return modelAndView;
