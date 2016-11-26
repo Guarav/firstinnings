@@ -23,18 +23,24 @@ body {
     border-radius: 10px;
 }
 
-/*form {*/
-
-    /*position: relative;*/
-    /*top: 155px;*/
-    /*left: 100px;*/
-/*}*/
+.Enquiry {
+    position: absolute;
+    top: 180px;
+    left: 100px;
+    padding: 30px;
+    background-color: darkgrey;
+    color: #000000;
+    font-style: oblique;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+}
 
 .AddMember {
     position: absolute;
-    top: 210px;
+    top: 310px;
     left: 100px;
-    padding: 50px;
+    padding: 30px;
     background-color: darkgrey;
     color: #000000;
     font-style: oblique;
@@ -45,9 +51,9 @@ body {
 
 .UpdateMember {
     position: absolute;
-    top: 210px;
+    top: 310px;
     left: 400px;
-    padding: 50px;
+    padding: 30px;
     background-color: darkgrey;
     color: black;
     font-style: oblique;
@@ -58,9 +64,9 @@ body {
 
 .RenewMember {
     position: absolute;
-    top: 210px;
+    top: 310px;
     left: 750px;
-    padding: 50px;
+    padding: 30px;
     background-color: darkgrey;
     color: black;
     font-style: oblique;
@@ -114,7 +120,7 @@ p {
 
 }
 
-.label {
+.label_form {
     color: white;
     width: 200px;
     display: inline-block;

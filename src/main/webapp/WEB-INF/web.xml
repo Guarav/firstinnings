@@ -72,4 +72,9 @@
         <url-pattern>/Writetous</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/Enquiry</url-pattern>
+    </servlet-mapping>
+
 </web-app>

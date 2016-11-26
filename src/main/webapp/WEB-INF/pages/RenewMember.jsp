@@ -2,7 +2,7 @@
 <jsp:include page="header.jsp" />
 
 <br>
-<p class="search"> Search by</p>
+<%--<p class="search"> Search by</p>--%>
 
 <form data-ng-controller="renew-member-controller" class="form_member" id="contact_form" method="POST" action="/renewMember">
 

@@ -45,8 +45,8 @@ public class ActionsController {
     @RequestMapping(method = RequestMethod.POST, value = "/Writetous")
     public String Writetous1(ModelMap model) {
 
-        final String username = "abeygaurav@gmail.com";
-        final String password = "##";
+        final String username = "esha90@gmail.com";
+        final String password = "xxx";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -65,7 +65,7 @@ public class ActionsController {
 
             javax.mail.Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("esha90@gmail.com"));
-            message.setRecipients(javax.mail.Message.RecipientType.TO, InternetAddress.parse("abeygaurav@gmail.com"));
+            message.setRecipients(javax.mail.Message.RecipientType.TO, InternetAddress.parse("esha90@gmail.com"));
             message.setSubject("Testing Subject");
             message.setText("Dear Mail Crawler," + "\n\n No spam to my email, please!");
 
