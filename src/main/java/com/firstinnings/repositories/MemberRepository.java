@@ -14,7 +14,4 @@ public interface MemberRepository extends MongoRepository<Member, String> {
     Member findByPhone(String phone);
 
     Member findByEmail(String email);
-
-    Member findAllByPlaceJoining();
-
 }

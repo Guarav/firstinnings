@@ -4,10 +4,10 @@
 <br>
 <%--<p class="search"> Search by</p>--%>
 
-<form data-ng-controller="renew-member-controller" class="form_member" id="contact_form" method="POST" action="/renewMember">
+<form data-ng-controller="subscription-member-controller" class="form_member" id="contact_form" method="POST" action="/subscribeMember">
 
     <select ng-model="medium">
-        <option value="">Search By:</option>
+        <option disabled value="">Search By:</option>
         <option value="phone">Phone</option>
         <option value="emailId">Email</option>
         <option value="membershipId">Membership Id</option>
@@ -32,22 +32,27 @@
         <input id="membership_id" name="memberId" type="hidden"/>
         <div class="row">
             <br />
-            <label for="renewal_date" class="label">Renewal date:</label>
-            <input id="renewal_date" required class="input datepicker" name="renewal_date" value="" size="30" /><br />
+            <label for="subscription_date" class="label_form">Subscription date:</label>
+            <input id="subscription_date" required class="input datepicker" name="subscription_date" value="" size="30" /><br />
         </div>
 
         <div class="row">
             <br />
-            <label for="membership_months" class="label">Months of membership:</label>
+            <label for="membership_months" class="label_form">Months of membership:</label>
             <input id="membership_months" required class="input" name="membership_months" type="text" value="" size="30" /><br />
         </div>
         <div class="row">
             <br />
-            <label for="amount_paid" class="label">Amount paid:</label>
+            <label for="amount_paid" class="label_form">Amount paid:</label>
             <input id="amount_paid" required class="input" name="amount_paid" type="text" value="" size="30" /><br />
         </div>
+        <div class="row">
+            <br />
+            <label for="place" class="label_form">Place:</label>
+            <input id="place" required class="input" name="place" type="text" value="" size="30" /><br />
+        </div>
 
-        <input id="submit_button" type="submit" value="Renew" style="font-size: 100%"/>
+        <input id="submit_button" type="submit" value="Add Subscription" style="font-size: 100%"/>
 
     </div>
 

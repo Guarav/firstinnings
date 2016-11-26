@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.firstinnings.dto.Member;
 import com.firstinnings.dto.Message;
+import com.firstinnings.dto.Subscription;
 import com.firstinnings.repositories.MemberRepository;
+import com.firstinnings.repositories.SubscriptionRepository;
 
 /**
  * This controller handles the addition of member task.
@@ -24,7 +26,10 @@ import com.firstinnings.repositories.MemberRepository;
 public class AddMemberController {
 
     @Autowired
-    private MemberRepository repository;
+    private MemberRepository       memberRepository;
+
+    @Autowired
+    private SubscriptionRepository subscriptionRepository;
 
     /**
      * Add a member render.
@@ -53,11 +58,23 @@ public class AddMemberController {
         }
         System.out.println("add a member " + allParameterDetails);
         try {
-            repository.save(new Member(allParameterDetails));
+            // save the member details.
+            Member member = new Member(allParameterDetails);
+            memberRepository.save(member);
+
+            // update the subscription details.
+            Subscription subscription = Subscription.builder()
+                    .amount(Integer.parseInt(allParameterDetails.get("amount_paid")))
+                    .membershipMonths(Integer.parseInt(allParameterDetails.get("membership_months")))
+                    .place(allParameterDetails.get("place"))
+                    .subscriptionDate(allParameterDetails.get("membership_date")).memberId(member.getMemberId()).build();
+            subscriptionRepository.save(subscription);
+
             modelAndView.addObject("message", new Message("The details have been successfully added.",
                     Message.Status.SUCCESS));
             modelAndView.setViewName("AddMember");
         } catch (Exception e) {
+            e.printStackTrace();
             modelAndView.addObject("message", new Message("The details could not be saved. Please try again.",
                     Message.Status.ERROR));
             modelAndView.setViewName("AddMember");

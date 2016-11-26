@@ -4,6 +4,22 @@
 
     <jsp:include page="memberDetails.jsp" />
 
+    <div class="row">
+        <br />
+        <label for="place" class="label_form">Place of Joining:</label>
+        <input id="place" data-ng-model="member.placeJoining" required class="input" name="place" type="text" value="" size="30" /><br />
+    </div>
+    <div class="row">
+        <br />
+        <label for="membership_months" class="label_form">Months of membership:</label>
+        <input id="membership_months" data-ng-model="member.membershipMonths" required class="input" name="membership_months" type="text" value="" size="30" /><br />
+    </div>
+    <div class="row">
+        <br />
+        <label for="amount_paid" class="label_form">Amount paid:</label>
+        <input id="amount_paid" data-ng-model="member.amountPaid" required class="input" name="amount_paid" type="text" value="" size="30" /><br />
+    </div>
+
     <br />
     <input id="submit_button" type="submit" value="Add" style="font-size: 100%"/>
 </form>

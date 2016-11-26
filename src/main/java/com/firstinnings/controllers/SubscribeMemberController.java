@@ -17,41 +17,41 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.firstinnings.dto.Member;
 import com.firstinnings.dto.Message;
-import com.firstinnings.dto.Renew;
+import com.firstinnings.dto.Subscription;
 import com.firstinnings.repositories.MemberRepository;
-import com.firstinnings.repositories.RenewRepository;
+import com.firstinnings.repositories.SubscriptionRepository;
 
 /**
  * Created by poplig on 11/13/16.
  */
 @Controller
-public class RenewMemberController {
+public class SubscribeMemberController {
 
     @Autowired
-    private MemberRepository memberRepository;
+    private MemberRepository       memberRepository;
 
     @Autowired
-    private RenewRepository  renewRepository;
+    private SubscriptionRepository subscriptionRepository;
 
     /**
-     * Renew member render.
+     * Subscription member render.
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/renewMember")
+    @RequestMapping(method = RequestMethod.GET, value = "/subscribeMember")
     public String renewMember() {
 
-        return "RenewMember";
+        return "SubscribeMember";
     }
 
     /**
      * Handles renew member submit.
      * @return
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/renewMember")
+    @RequestMapping(method = RequestMethod.POST, value = "/subscribeMember")
     public ModelAndView renewMemberSubmit(HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("RenewMember");
+        modelAndView.setViewName("SubscribeMember");
         String memberId = request.getParameter("memberId");
 
         // Find the details of this member.
@@ -71,17 +71,20 @@ public class RenewMemberController {
             String param = list.nextElement();
             allParameterDetails.put(param, request.getParameter(param));
         }
-        // make a new entry in renew table.
-        Renew renew = Renew.builder().amount(Integer.parseInt(allParameterDetails.get("amount_paid")))
+        // make a new entry in subscription table.
+        Subscription subscription = Subscription.builder()
+                .amount(Integer.parseInt(allParameterDetails.get("amount_paid")))
                 .membershipMonths(Integer.parseInt(allParameterDetails.get("membership_months")))
-                .renewalDate(allParameterDetails.get("renewal_date")).memberId(memberId).build();
+                .place(allParameterDetails.get("place"))
+                .subscriptionDate(allParameterDetails.get("subscription_date")).memberId(memberId).build();
 
         try {
             // save the entry.
-            renewRepository.save(renew);
+            subscriptionRepository.save(subscription);
             modelAndView.addObject("message", new Message("The details have been successfully added.",
                     Message.Status.SUCCESS));
         } catch (Exception e) {
+            e.printStackTrace();
             modelAndView.addObject("message", new Message("The details could not be saved. Please try again.",
                     Message.Status.ERROR));
 
@@ -90,7 +93,7 @@ public class RenewMemberController {
     }
 
     /**
-     * Renew member render.
+     * Subscription member render.
      * @return
      */
     @RequestMapping(method = RequestMethod.POST, value = "/findMember")

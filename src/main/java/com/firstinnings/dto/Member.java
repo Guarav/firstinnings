@@ -44,14 +44,6 @@ public class Member {
     @Indexed
     private String membershipDate;
 
-    @Indexed
-    private String placeJoining;
-
-    @Indexed
-    private int    membershipMonths;
-
-    private int    amountPaid;
-
     public Member() {
 
     }
@@ -65,9 +57,6 @@ public class Member {
         this.birthDate = details.get("birth_date");
         this.membershipDate = details.get("membership_date");
         this.maritalStatus = details.get("marital_status");
-        this.placeJoining = details.get("place_joining");
-        this.membershipMonths = Integer.valueOf(details.get("membership_months"));
-        this.amountPaid = Integer.valueOf(details.get("amount_paid"));
         this.currentDate = new Date().toString();
     }
 
@@ -83,9 +72,6 @@ public class Member {
                 ", phone='" + phone + '\'' +
                 ", birthDate='" + birthDate + '\'' +
                 ", membershipDate='" + membershipDate + '\'' +
-                ", placeJoining='" + placeJoining + '\'' +
-                ", membershipMonths=" + membershipMonths +
-                ", amountPaid=" + amountPaid +
                 '}';
     }
 }

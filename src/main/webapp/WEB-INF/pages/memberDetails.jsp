@@ -51,18 +51,3 @@
     <label for="membership_date" class="label_form">Membership Date:</label>
     <input id="membership_date" data-ng-model="member.membershipDate" required class="input datepicker" name="membership_date" type="text" placeholder="dd-mm-yyyy" size="30" /><br />
 </div>
-<div class="row">
-    <br />
-    <label for="place_joining" class="label_form">Place of Joining:</label>
-    <input id="place_joining" data-ng-model="member.placeJoining" required class="input" name="place_joining" type="text" value="" size="30" /><br />
-</div>
-<div class="row">
-    <br />
-    <label for="membership_months" class="label_form">Months of membership:</label>
-    <input id="membership_months" data-ng-model="member.membershipMonths" required class="input" name="membership_months" type="text" value="" size="30" /><br />
-</div>
-<div class="row">
-    <br />
-    <label for="amount_paid" class="label_form ">Amount paid:</label>
-    <input id="amount_paid" data-ng-model="member.amountPaid" required class="input" name="amount_paid" type="text" value="" size="30" /><br />
-</div>

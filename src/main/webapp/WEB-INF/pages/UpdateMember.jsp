@@ -7,7 +7,7 @@
 <form data-ng-controller="update-member-controller" class="form_member" method="POST" action="/updateMember">
 
     <select ng-model="medium">
-        <option value="">Search By:</option>
+        <option disabled value="">Search By:</option>
         <option value="phone">Phone</option>
         <option value="emailId">Email</option>
         <option value="membershipId">Membership Id</option>

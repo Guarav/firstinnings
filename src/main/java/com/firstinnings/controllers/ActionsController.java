@@ -8,15 +8,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.firstinnings.accessor.MongoAccessor;
-import com.firstinnings.repositories.MemberRepository;
-import com.firstinnings.repositories.RenewRepository;
 
 /**
  * This controller handles the actions or operations that can be possible for the user to do. This

@@ -1,5 +1,5 @@
 // Renew member controller
-firstinnings.controller('renew-member-controller', ['$scope', 'httpService', function ($scope, httpService) {
+firstinnings.controller('subscription-member-controller', ['$scope', 'httpService', function ($scope, httpService) {
 
     $scope.findMember = function () {
 
