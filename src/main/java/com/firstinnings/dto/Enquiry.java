@@ -31,7 +31,7 @@ public class Enquiry {
 
     @Id
     @Setter
-    private String EnquiryId;
+    private String enquiryId;
 
     @Indexed
     private String currentDate;

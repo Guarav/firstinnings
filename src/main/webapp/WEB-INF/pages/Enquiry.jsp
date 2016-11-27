@@ -22,8 +22,8 @@
         <label for="sex" class = "label_form">Sex:</label>
         <select id="sex" name="sex" required class="input">
             <option disabled value="" selected="selected">Select:</option>
-            <option value="">Male</option>
-            <option value="">Female</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
         </select>
     </div>
     <div class="row">
@@ -37,11 +37,11 @@
         <label for="source" class = "label_form">Source:</label>
         <select id="source" name="source" required class="input">
             <option disabled value="" selected="selected">Select:</option>
-            <option value="">Internet</option>
-            <option value="">Phone</option>
-            <option value="">Friend</option>
-            <option value="">Advertisement</option>
-            <option value="">Others</option>
+            <option value="internet">Internet</option>
+            <option value="phone">Phone</option>
+            <option value="friend">Friend</option>
+            <option value="advertisement">Advertisement</option>
+            <option value="others">Others</option>
         </select>
     </div>
 
