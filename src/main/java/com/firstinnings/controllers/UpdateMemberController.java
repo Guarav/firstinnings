@@ -66,10 +66,8 @@ public class UpdateMemberController {
             allParameterDetails.put(param, request.getParameter(param));
         }
 
-        Member updatedMember = new Member(allParameterDetails);
-
-
         try {
+            Member updatedMember = new Member(allParameterDetails);
             // save the entry.
             updatedMember.setMemberId(member.getMemberId());
             memberRepository.save(updatedMember);

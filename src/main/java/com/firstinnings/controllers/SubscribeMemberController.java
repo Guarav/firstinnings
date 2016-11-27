@@ -1,5 +1,8 @@
 package com.firstinnings.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,14 +75,17 @@ public class SubscribeMemberController {
             String param = list.nextElement();
             allParameterDetails.put(param, request.getParameter(param));
         }
-        // make a new entry in subscription table.
-        Subscription subscription = Subscription.builder()
-                .amount(Integer.parseInt(allParameterDetails.get("amount_paid")))
-                .membershipMonths(Integer.parseInt(allParameterDetails.get("membership_months")))
-                .place(allParameterDetails.get("place"))
-                .subscriptionDate(allParameterDetails.get("subscription_date")).memberId(memberId).build();
 
         try {
+            // make a new entry in subscription table.
+            int months = Integer.parseInt(allParameterDetails.get("membership_months"));
+            DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+            Date subscriptionDate = dateFormat.parse(allParameterDetails.get("membership_date"));
+            Subscription subscription = Subscription.builder()
+                    .amount(Integer.parseInt(allParameterDetails.get("amount_paid"))).membershipMonths(months)
+                    .expirationDate(DateUtils.addMonths(subscriptionDate, months))
+                    .place(allParameterDetails.get("place")).currentDate(new Date()).subscriptionDate(subscriptionDate)
+                    .memberId(member.getMemberId()).build();
             // save the entry.
             subscriptionRepository.save(subscription);
             modelAndView.addObject("message", new Message("The details have been successfully added.",

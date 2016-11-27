@@ -1,11 +1,15 @@
 package com.firstinnings.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -63,11 +67,14 @@ public class AddMemberController {
             memberRepository.save(member);
 
             // update the subscription details.
+            int months = Integer.parseInt(allParameterDetails.get("membership_months"));
+            DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+            Date subscriptionDate = dateFormat.parse(allParameterDetails.get("membership_date"));
             Subscription subscription = Subscription.builder()
-                    .amount(Integer.parseInt(allParameterDetails.get("amount_paid")))
-                    .membershipMonths(Integer.parseInt(allParameterDetails.get("membership_months")))
-                    .place(allParameterDetails.get("place"))
-                    .subscriptionDate(allParameterDetails.get("membership_date")).memberId(member.getMemberId()).build();
+                    .amount(Integer.parseInt(allParameterDetails.get("amount_paid"))).membershipMonths(months)
+                    .expirationDate(DateUtils.addMonths(subscriptionDate, months))
+                    .place(allParameterDetails.get("place")).currentDate(new Date()).subscriptionDate(subscriptionDate)
+                    .memberId(member.getMemberId()).build();
             subscriptionRepository.save(subscription);
 
             modelAndView.addObject("message", new Message("The details have been successfully added.",

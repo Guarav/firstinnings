@@ -1,11 +1,14 @@
 package com.firstinnings.dto;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-
 import lombok.Setter;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,10 +19,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Getter
 @Document
+@EqualsAndHashCode
 public class Member {
 
     @Indexed
-    private String currentDate;
+    private Date   currentDate;
 
     @Id
     @Setter
@@ -37,41 +41,27 @@ public class Member {
     @Indexed
     private String phone;
 
-    private String birthDate;
+    private Date   birthDate;
 
     private String maritalStatus;
 
     @Indexed
-    private String membershipDate;
+    private Date   membershipDate;
 
     public Member() {
 
     }
 
-    public Member(Map<String, String> details) {
+    public Member(Map<String, String> details) throws Exception {
         this.name = details.get("name");
         this.email = details.get("email");
         this.address = details.get("address");
         this.sex = details.get("sex");
         this.phone = details.get("phone");
-        this.birthDate = details.get("birth_date");
-        this.membershipDate = details.get("membership_date");
+        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+        this.birthDate = dateFormat.parse(details.get("birth_date"));
+        this.membershipDate = dateFormat.parse(details.get("membership_date"));
         this.maritalStatus = details.get("marital_status");
-        this.currentDate = new Date().toString();
-    }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "currentDate='" + currentDate + '\'' +
-                ", memberId='" + memberId + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", sex='" + sex + '\'' +
-                ", phone='" + phone + '\'' +
-                ", birthDate='" + birthDate + '\'' +
-                ", membershipDate='" + membershipDate + '\'' +
-                '}';
+        this.currentDate = new Date();
     }
 }
