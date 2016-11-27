@@ -14,26 +14,16 @@
         <label for="membership_months" class="label_form">Months of membership:</label>
         <select data-ng-model="member.membershipMonths" id="membership_months" name="membership_months">
             <option disabled value="">Select:</option>
-            <option value="">1 month</option>
-            <option value="">2 months</option>
-            <option value="">3 months</option>
-            <option value="">6 months</option>
-            <option value="">1 year</option>
-            <option value="">Other</option>
+            <option value="1">1 month</option>
+            <option value="2">2 months</option>
+            <option value="3">3 months</option>
+            <option value="6">6 months</option>
+            <option value="12">1 year</option>
         </select>
 
         <%--<input id="membership_months" data-ng-model="member.membershipMonths" required class="input" name="membership_months" type="text" value="" size="30" /><br />--%>
     </div>
 
-    <div class="row">
-        <br />
-        <label for="sex" class = "label_form">Sex:</label>
-        <select data-ng-model="member.sex" id="sex" name="sex">
-            <option disabled value="">Select:</option>
-            <option value="">Male</option>
-            <option value="">Female</option>
-        </select>
-    </div>
 
     <div class="row">
         <br />

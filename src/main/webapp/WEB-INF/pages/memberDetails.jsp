@@ -25,8 +25,8 @@
     <label for="sex" class = "label_form">Sex:</label>
     <select data-ng-model="member.sex" id="sex" name="sex">
         <option disabled value="">Select:</option>
-        <option value="">Male</option>
-        <option value="">Female</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
     </select>
 </div>
 <div class="row">
@@ -44,8 +44,8 @@
     <label class="label_form" for = "marital_status">Marital Status</label>
     <select data-ng-model="member.maritalStatus" id="marital_status" name="marital_status">
         <option disabled value="">Select:</option>
-        <option value="">Married</option>
-        <option value="">Single</option>
+        <option value="married">Married</option>
+        <option value="single">Single</option>
     </select>
 </div>
 <div class="row">
