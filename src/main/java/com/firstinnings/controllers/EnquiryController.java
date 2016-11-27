@@ -6,6 +6,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.firstinnings.dto.Enquiry;
+import com.firstinnings.dto.Subscription;
+import com.firstinnings.repositories.EnquiryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,7 +27,7 @@ import com.firstinnings.repositories.MemberRepository;
 public class EnquiryController {
 
     @Autowired
-    private MemberRepository repository;
+    private EnquiryRepository repository;
 
     /**
      * Add a member render.
@@ -51,13 +54,24 @@ public class EnquiryController {
             String param = list.nextElement();
             allParameterDetails.put(param, request.getParameter(param));
         }
-        System.out.println("add a member " + allParameterDetails);
         try {
-            repository.save(new Member(allParameterDetails));
+            // save the enquiry.
+
+            Enquiry enquiry = Enquiry.builder()
+                    .name(allParameterDetails.get("name"))
+                    .email(allParameterDetails.get("email"))
+                    .address(allParameterDetails.get("address"))
+                    .sex(allParameterDetails.get("sex"))
+                    .phone(allParameterDetails.get("phone"))
+                    .source(allParameterDetails.get("source"))
+                    .build();
+            repository.save(enquiry);
+
             modelAndView.addObject("message", new Message("The details have been successfully added.",
                     Message.Status.SUCCESS));
             modelAndView.setViewName("Enquiry");
         } catch (Exception e) {
+            e.printStackTrace();
             modelAndView.addObject("message", new Message("The details could not be saved. Please try again.",
                     Message.Status.ERROR));
             modelAndView.setViewName("Enquiry");
@@ -67,3 +81,4 @@ public class EnquiryController {
     }
 
 }
+

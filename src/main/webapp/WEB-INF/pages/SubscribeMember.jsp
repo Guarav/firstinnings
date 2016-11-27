@@ -33,7 +33,7 @@
         <div class="row">
             <br />
             <label for="subscription_date" class="label_form">Subscription date:</label>
-            <input id="subscription_date" required class="input datepicker" name="subscription_date" value="" size="30" /><br />
+            <input id="subscription_date" required class="input datepicker" name="subscription_date" placeholder="dd-mm-yyyy" value="" size="30" /><br />
         </div>
 
         <div class="row">
