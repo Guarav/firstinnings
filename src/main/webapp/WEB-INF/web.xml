@@ -74,7 +74,14 @@
 
     <servlet-mapping>
         <servlet-name>mvc-dispatcher</servlet-name>
-        <url-pattern>/Enquiry</url-pattern>
+        <url-pattern>/enquiry</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/defaulters</url-pattern>
+    </servlet-mapping>
+
+
 
 </web-app>

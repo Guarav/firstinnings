@@ -1,14 +1,12 @@
 package com.firstinnings.controllers;
 
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.firstinnings.dto.Enquiry;
-import com.firstinnings.dto.Subscription;
-import com.firstinnings.repositories.EnquiryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.firstinnings.dto.Member;
+import com.firstinnings.dto.Enquiry;
 import com.firstinnings.dto.Message;
-import com.firstinnings.repositories.MemberRepository;
+import com.firstinnings.repositories.EnquiryRepository;
 
 /**
  * This controller handles the addition of member task.
@@ -34,7 +32,7 @@ public class EnquiryController {
      * @param model
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/Enquiry")
+    @RequestMapping(method = RequestMethod.GET, value = "/enquiry")
     public String addAMember(ModelMap model) {
 
         return "Enquiry";
@@ -44,7 +42,8 @@ public class EnquiryController {
      * Add a member submit.
      * @param request
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/Enquiry")
+    @SuppressWarnings("unchecked")
+    @RequestMapping(method = RequestMethod.POST, value = "/enquiry")
     public ModelAndView addAMemberSubmit(HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView();
@@ -57,14 +56,10 @@ public class EnquiryController {
         try {
             // save the enquiry.
 
-            Enquiry enquiry = Enquiry.builder()
-                    .name(allParameterDetails.get("name"))
-                    .email(allParameterDetails.get("email"))
-                    .address(allParameterDetails.get("address"))
-                    .sex(allParameterDetails.get("sex"))
-                    .phone(allParameterDetails.get("phone"))
-                    .source(allParameterDetails.get("source"))
-                    .build();
+            Enquiry enquiry = Enquiry.builder().name(allParameterDetails.get("name"))
+                    .email(allParameterDetails.get("email")).address(allParameterDetails.get("address"))
+                    .sex(allParameterDetails.get("sex")).phone(allParameterDetails.get("phone"))
+                    .source(allParameterDetails.get("source")).currentDate(new Date()).build();
             repository.save(enquiry);
 
             modelAndView.addObject("message", new Message("The details have been successfully added.",
@@ -81,4 +76,3 @@ public class EnquiryController {
     }
 
 }
-

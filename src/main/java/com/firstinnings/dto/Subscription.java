@@ -1,6 +1,9 @@
 package com.firstinnings.dto;
 
+import java.util.Date;
+
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -15,6 +18,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Builder
 @Document
+@EqualsAndHashCode
 public class Subscription {
 
     @NonNull
@@ -26,10 +30,14 @@ public class Subscription {
 
     @NonNull
     @Indexed
-    private String subscriptionDate;
+    private Date   subscriptionDate;
 
     @Indexed
-    private String currentDate;
+    private Date   currentDate;
+
+    @Indexed
+    @NonNull
+    private Date   expirationDate;
 
     @NonNull
     private int    membershipMonths;

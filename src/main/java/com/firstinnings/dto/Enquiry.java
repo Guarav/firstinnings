@@ -9,6 +9,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 /**
  * Created by eshag on 11/27/16.
  */
@@ -34,7 +36,7 @@ public class Enquiry {
     private String enquiryId;
 
     @Indexed
-    private String currentDate;
+    private Date currentDate;
 
     @NonNull
     private String source;

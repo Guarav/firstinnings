@@ -2,7 +2,8 @@
 
 
 <%--<a href="index.html" class="button">Home</a>--%>
-<a href="/Enquiry" class="Enquiry">Enquiry</a>
+<a href="/enquiry" class="Enquiry">Enquiry</a>
+<a href="/defaulters" class="Enquiry">Defaulters</a>
 <a href="/addAMember" class="AddMember">Add a member</a>
 <a href="/updateMember" class="UpdateMember">Update member details</a>
 <a href="/subscribeMember" class="RenewMember">Add Subscription</a>
