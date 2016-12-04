@@ -7,7 +7,14 @@
     <div class="row">
         <br />
         <label for="place" class="label_form">Place of Joining:</label>
-        <input id="place" data-ng-model="member.placeJoining" required class="input" name="place" type="text" value="" size="30" /><br />
+        <select data-ng-model="member.placeJoining" id="place" name="place">
+            <option disabled value="">Select:</option>
+            <option value="New Delhi">New Delhi</option>
+            <option value="Noida">Noida</option>
+            <option value="Gurgaon">Gurgaon</option>
+
+        </select>
+
     </div>
     <div class="row">
         <br />

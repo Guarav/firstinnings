@@ -39,7 +39,17 @@
         <div class="row">
             <br />
             <label for="membership_months" class="label_form">Months of membership:</label>
-            <input id="membership_months" required class="input" name="membership_months" type="text" value="" size="30" /><br />
+
+            <select id="membership_months" name="membership_months">
+                <option disabled value="">Select:</option>
+                <option value="1">1 month</option>
+                <option value="2">2 months</option>
+                <option value="3">3 months</option>
+                <option value="6">6 months</option>
+                <option value="12">1 year</option>
+            </select>
+
+
         </div>
         <div class="row">
             <br />
@@ -49,7 +59,14 @@
         <div class="row">
             <br />
             <label for="place" class="label_form">Place:</label>
-            <input id="place" required class="input" name="place" type="text" value="" size="30" /><br />
+
+            <select id="place" name="place">
+                <option disabled value="">Select:</option>
+                <option value="New Delhi">New Delhi</option>
+                <option value="Noida">Noida</option>
+                <option value="Gurgaon">Gurgaon</option>
+
+            </select>
         </div>
 
         <input id="submit_button" type="submit" value="Add Subscription" style="font-size: 100%"/>
