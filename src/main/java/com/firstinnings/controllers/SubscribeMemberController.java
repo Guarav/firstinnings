@@ -5,10 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,17 +79,36 @@ public class SubscribeMemberController {
         }
 
         try {
+
+            // make the previous active subscription entry of this user as inactive first for ease in query.
+            List<Subscription> existingActiveSubscriptions = subscriptionRepository.findByStatusAndMemberId(
+                    Member.Status.ACTIVE, memberId);
+
+            System.out.println("poplig " + existingActiveSubscriptions);
+
+            if (CollectionUtils.isNotEmpty(existingActiveSubscriptions)) {
+
+                // Ideally the length of this list should be 1, iterating all the elements to make
+                // sure we cover all in
+                // case some got left.
+                existingActiveSubscriptions.forEach(subscription -> {
+                    subscription.setStatus(Member.Status.INACTIVE);
+                    subscriptionRepository.save(subscription);
+                });
+            }
+
             // make a new entry in subscription table.
             int months = Integer.parseInt(allParameterDetails.get("membership_months"));
             DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-            Date subscriptionDate = dateFormat.parse(allParameterDetails.get("membership_date"));
+            Date subscriptionDate = dateFormat.parse(allParameterDetails.get("subscription_date"));
             Subscription subscription = Subscription.builder()
                     .amount(Integer.parseInt(allParameterDetails.get("amount_paid"))).membershipMonths(months)
                     .expirationDate(DateUtils.addMonths(subscriptionDate, months))
                     .place(allParameterDetails.get("place")).currentDate(new Date()).subscriptionDate(subscriptionDate)
+                    .status(Member.Status.ACTIVE)
                     .memberId(member.getMemberId()).build();
             // save the entry.
-            subscriptionRepository.save(subscription);
+            subscriptionRepository.insert(subscription);
             modelAndView.addObject("message", new Message("The details have been successfully added.",
                     Message.Status.SUCCESS));
         } catch (Exception e) {

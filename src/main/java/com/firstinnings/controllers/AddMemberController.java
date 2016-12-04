@@ -74,6 +74,7 @@ public class AddMemberController {
                     .amount(Integer.parseInt(allParameterDetails.get("amount_paid"))).membershipMonths(months)
                     .expirationDate(DateUtils.addMonths(subscriptionDate, months))
                     .place(allParameterDetails.get("place")).currentDate(new Date()).subscriptionDate(subscriptionDate)
+                    .status(Member.Status.ACTIVE)
                     .memberId(member.getMemberId()).build();
             subscriptionRepository.save(subscription);
 

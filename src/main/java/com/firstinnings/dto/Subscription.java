@@ -47,4 +47,7 @@ public class Subscription {
 
     @NonNull
     private String place;
+
+    @Setter
+    private Member.Status status = Member.Status.ACTIVE;
 }

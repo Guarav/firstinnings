@@ -34,8 +34,8 @@ public class DefaulterController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("defaulters");
 
-        List<Subscription> subscriptionList = subscriptionRepository.findByExpirationDateBefore(DateUtils.addDays(
-                new Date(), 1));
+        List<Subscription> subscriptionList = subscriptionRepository.findByExpirationDateBeforeAndStatus(
+                DateUtils.addDays(new Date(), 1), Member.Status.ACTIVE);
 
         List<Member> memberList = new ArrayList<>();
 

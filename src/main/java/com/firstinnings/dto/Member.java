@@ -48,6 +48,8 @@ public class Member {
     @Indexed
     private Date   membershipDate;
 
+    private Status status = Status.ACTIVE;
+
     public Member() {
 
     }
@@ -62,6 +64,18 @@ public class Member {
         this.birthDate = dateFormat.parse(details.get("birth_date"));
         this.membershipDate = dateFormat.parse(details.get("membership_date"));
         this.maritalStatus = details.get("marital_status");
+        String status = details.get("status");
+        if (Status.INACTIVE.toString().equals(status)) {
+            this.status = Status.INACTIVE;
+        } else {
+            this.status = Status.ACTIVE;
+        }
+
         this.currentDate = new Date();
+    }
+
+    public static enum Status {
+        ACTIVE,
+        INACTIVE
     }
 }
