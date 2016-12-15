@@ -68,7 +68,7 @@ public class AddMemberController {
 
             // update the subscription details.
             int months = Integer.parseInt(allParameterDetails.get("membership_months"));
-            DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             Date subscriptionDate = dateFormat.parse(allParameterDetails.get("membership_date"));
             Subscription subscription = Subscription.builder()
                     .amount(Integer.parseInt(allParameterDetails.get("amount_paid"))).membershipMonths(months)

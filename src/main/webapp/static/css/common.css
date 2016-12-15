@@ -75,6 +75,19 @@ body {
     border-radius: 10px;
 }
 
+.GetRevenue {
+    position: absolute;
+    top: 500px;
+    left: 100px;
+    padding: 30px;
+    background-color: darkgrey;
+    color: black;
+    font-style: oblique;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
 .button {
     position: absolute;
     top: 10px;
