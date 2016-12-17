@@ -14,4 +14,4 @@
     </tr>
 </c:forEach>
 
-
+<a href="/home" class="button">Home</a>
