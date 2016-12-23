@@ -54,12 +54,10 @@ public class RevenueController {
                 break;
         }
 
-        List<Subscription> subscriptions = subscriptionRepository.findAllSubsriptionStartedAfterDate(date);
-        long totalRevenue = subscriptions.stream().mapToLong(subscription -> subscription.getAmount()).sum();
+        List<Subscription> subscriptions = subscriptionRepository.findAllSubscriptionStartedAfterDate(date);
+        long totalRevenue = subscriptions.stream().mapToLong(Subscription::getAmount).sum();
 
-        ModelAndView modelAndView = new ModelAndView("GetRevenue",
+        return new ModelAndView("GetRevenue",
                 Collections.singletonMap("totalRevenue", totalRevenue));
-
-        return modelAndView;
     }
 }

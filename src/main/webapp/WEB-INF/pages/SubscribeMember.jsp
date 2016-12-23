@@ -23,7 +23,6 @@
 
     <div style="color:white;" data-ng-show="member" >
             <div>
-                <input data-ng-click="selectMember(member)" type="radio" >
                 {{member.name}}, {{member.email}} {{member.address}}
             </div>
 

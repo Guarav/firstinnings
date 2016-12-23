@@ -20,6 +20,5 @@ public interface SubscriptionRepository extends MongoRepository<Subscription, St
 
     List<Subscription> findByStatusAndMemberId(Member.Status status, String memberId);
 
-    @Query(value = "{'subscriptionDate' : {$gte : ?0}}")
-    List<Subscription> findAllSubsriptionStartedAfterDate(Date subscriptionDate);
+    List<Subscription> findAllSubscriptionStartedAfterDate(Date subscriptionDate);
 }
