@@ -21,13 +21,11 @@
 
     <br>
 
-    <div style="color:white;" data-ng-show="members" >
-        <div data-ng-repeat="member in members">
-            <span>
+    <div style="color:white;" data-ng-show="member" >
+            <div>
                 <input data-ng-click="selectMember(member)" type="radio" >
                 {{member.name}}, {{member.email}} {{member.address}}
-            </span>
-        </div>
+            </div>
 
         <input id="membership_id" name="memberId" type="hidden"/>
         <div class="row">

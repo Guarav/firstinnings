@@ -1,12 +1,12 @@
 package com.firstinnings.dto;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import org.springframework.data.annotation.Id;
@@ -19,60 +19,46 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Getter
 @Document
+@Builder
 @EqualsAndHashCode
 public class Member {
 
     @Indexed
-    private Date   currentDate;
+    private Date   currentDate = new Date();
 
     @Id
     @Setter
     private String memberId;
 
+    @NonNull
     private String name;
 
     @Indexed
+    @NonNull
     private String email;
 
+    @NonNull
     private String address;
 
+    @NonNull
     private String sex;
 
     @Indexed
+    @NonNull
     private String phone;
 
+    @NonNull
     private Date   birthDate;
 
+    @NonNull
     private String maritalStatus;
 
     @Indexed
+    @Setter
+    @NonNull
     private Date   membershipDate;
 
     private Status status = Status.ACTIVE;
-
-    public Member() {
-
-    }
-
-    public Member(Map<String, String> details) throws Exception {
-        this.name = details.get("name");
-        this.email = details.get("email");
-        this.address = details.get("address");
-        this.sex = details.get("sex");
-        this.phone = details.get("phone");
-        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-        this.birthDate = dateFormat.parse(details.get("birth_date"));
-        this.membershipDate = dateFormat.parse(details.get("membership_date"));
-        this.maritalStatus = details.get("marital_status");
-        String status = details.get("status");
-        if (Status.INACTIVE.toString().equals(status)) {
-            this.status = Status.INACTIVE;
-        } else {
-            this.status = Status.ACTIVE;
-        }
-
-        this.currentDate = new Date();
-    }
 
     public static enum Status {
         ACTIVE,

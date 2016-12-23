@@ -1,7 +1,5 @@
 package com.firstinnings.controllers;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -22,6 +20,8 @@ import com.firstinnings.dto.Message;
 import com.firstinnings.dto.Subscription;
 import com.firstinnings.repositories.MemberRepository;
 import com.firstinnings.repositories.SubscriptionRepository;
+import com.firstinnings.utility.DateUtility;
+import com.firstinnings.utility.MemberUtility;
 
 /**
  * This controller handles the addition of member task.
@@ -31,6 +31,12 @@ public class AddMemberController {
 
     @Autowired
     private MemberRepository       memberRepository;
+
+    @Autowired
+    private DateUtility            dateUtility;
+
+    @Autowired
+    private MemberUtility          memberUtility;
 
     @Autowired
     private SubscriptionRepository subscriptionRepository;
@@ -50,6 +56,7 @@ public class AddMemberController {
      * Add a member submit.
      * @param request
      */
+    @SuppressWarnings("unchecked")
     @RequestMapping(method = RequestMethod.POST, value = "/addAMember")
     public ModelAndView addAMemberSubmit(HttpServletRequest request) {
 
@@ -63,19 +70,16 @@ public class AddMemberController {
         System.out.println("add a member " + allParameterDetails);
         try {
             // save the member details.
-            Member member = new Member(allParameterDetails);
-            memberRepository.save(member);
+            Member member = memberRepository.save(memberUtility.prepareMemberFromParams(allParameterDetails));
 
             // update the subscription details.
             int months = Integer.parseInt(allParameterDetails.get("membership_months"));
-            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-            Date subscriptionDate = dateFormat.parse(allParameterDetails.get("membership_date"));
+            Date subscriptionDate = dateUtility.convertToDate(allParameterDetails.get("membership_date"));
             Subscription subscription = Subscription.builder()
                     .amount(Integer.parseInt(allParameterDetails.get("amount_paid"))).membershipMonths(months)
                     .expirationDate(DateUtils.addMonths(subscriptionDate, months))
                     .place(allParameterDetails.get("place")).currentDate(new Date()).subscriptionDate(subscriptionDate)
-                    .status(Member.Status.ACTIVE)
-                    .memberId(member.getMemberId()).build();
+                    .status(Member.Status.ACTIVE).memberId(member.getMemberId()).build();
             subscriptionRepository.save(subscription);
 
             modelAndView.addObject("message", new Message("The details have been successfully added.",

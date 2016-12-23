@@ -30,8 +30,6 @@
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: "dd-mm-yy",
-//                minDate: "-70Y",
-//                maxDate: "20Y",
                 yearRange: "1950:2030"
             });
         } );

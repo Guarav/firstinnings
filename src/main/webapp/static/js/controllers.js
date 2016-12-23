@@ -6,9 +6,11 @@ firstinnings.controller('subscription-member-controller', ['$scope', 'httpServic
         httpService.post('/findMember', serializeData({medium: $scope.medium, value: $scope.value}))
             .success(function (response) {
                 if (response.member) {
-                    $scope.members = [response.member];
+                    $scope.member = [response.member][0];
+                    $scope.member.membershipDate = convertDateToString($scope.member.membershipDate);
+                    $scope.member.birthDate = convertDateToString($scope.member.birthDate);
                 } else {
-                    $scope.members = null;
+                    $scope.member = null;
                     $scope.errorMessage = "No results found";
                 }
             })
@@ -31,6 +33,8 @@ firstinnings.controller('update-member-controller', ['$scope', 'httpService', fu
             .success(function (response) {
                 if (response.member) {
                     $scope.member = [response.member][0];
+                    $scope.member.membershipDate = convertDateToString($scope.member.membershipDate);
+                    $scope.member.birthDate = convertDateToString($scope.member.birthDate);
                     $('#membership_id').val(response.member.memberId)
                 } else {
                     $scope.members = null;
@@ -41,3 +45,4 @@ firstinnings.controller('update-member-controller', ['$scope', 'httpService', fu
     };
 
 }]);
+

@@ -33,7 +33,7 @@ public class Subscription {
     private Date   subscriptionDate;
 
     @Indexed
-    private Date   currentDate;
+    private Date   currentDate = new Date();
 
     @Indexed
     @NonNull

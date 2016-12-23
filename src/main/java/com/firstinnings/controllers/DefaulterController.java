@@ -28,7 +28,6 @@ public class DefaulterController {
     @Autowired
     private MemberRepository       memberRepository;
 
-    // todo : need to consider the filter option to filter out duplicate result for same member.
     @RequestMapping(method = RequestMethod.GET, value = "/defaulters")
     public ModelAndView defaulterRender() {
         ModelAndView modelAndView = new ModelAndView();

@@ -1,7 +1,5 @@
 package com.firstinnings.controllers;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -17,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.firstinnings.dto.Member;
@@ -26,6 +22,7 @@ import com.firstinnings.dto.Message;
 import com.firstinnings.dto.Subscription;
 import com.firstinnings.repositories.MemberRepository;
 import com.firstinnings.repositories.SubscriptionRepository;
+import com.firstinnings.utility.DateUtility;
 
 /**
  * Created by poplig on 11/13/16.
@@ -35,6 +32,9 @@ public class SubscribeMemberController {
 
     @Autowired
     private MemberRepository       memberRepository;
+
+    @Autowired
+    private DateUtility            dateUtility;
 
     @Autowired
     private SubscriptionRepository subscriptionRepository;
@@ -80,7 +80,8 @@ public class SubscribeMemberController {
 
         try {
 
-            // make the previous active subscription entry of this user as inactive first for ease in query.
+            // make the previous active subscription entry of this user as inactive first for ease
+            // in query.
             List<Subscription> existingActiveSubscriptions = subscriptionRepository.findByStatusAndMemberId(
                     Member.Status.ACTIVE, memberId);
 
@@ -99,14 +100,12 @@ public class SubscribeMemberController {
 
             // make a new entry in subscription table.
             int months = Integer.parseInt(allParameterDetails.get("membership_months"));
-            DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-            Date subscriptionDate = dateFormat.parse(allParameterDetails.get("subscription_date"));
+            Date subscriptionDate = dateUtility.convertToDate(allParameterDetails.get("subscription_date"));
             Subscription subscription = Subscription.builder()
                     .amount(Integer.parseInt(allParameterDetails.get("amount_paid"))).membershipMonths(months)
                     .expirationDate(DateUtils.addMonths(subscriptionDate, months))
-                    .place(allParameterDetails.get("place")).currentDate(new Date()).subscriptionDate(subscriptionDate)
-                    .status(Member.Status.ACTIVE)
-                    .memberId(member.getMemberId()).build();
+                    .place(allParameterDetails.get("place")).subscriptionDate(subscriptionDate)
+                    .status(Member.Status.ACTIVE).memberId(member.getMemberId()).build();
             // save the entry.
             subscriptionRepository.insert(subscription);
             modelAndView.addObject("message", new Message("The details have been successfully added.",
@@ -118,41 +117,5 @@ public class SubscribeMemberController {
 
         }
         return modelAndView;
-    }
-
-    /**
-     * Subscription member render.
-     * @return
-     */
-    @RequestMapping(method = RequestMethod.POST, value = "/findMember")
-    public @ResponseBody Map findMember(@RequestParam("medium") String medium, @RequestParam("value") String value) {
-
-        System.out.println("in gaurav " + medium);
-        Map<String, Object> response = new HashMap<>();
-        if (StringUtils.equals(medium, "phone")) {
-
-            // Search for phone
-            Member member = memberRepository.findByPhone(value);
-            System.out.println("member before " + member);
-            if (member != null) {
-                System.out.println("member found " + member);
-                response.put("member", member);
-            }
-        } else if (StringUtils.equals(medium, "membershipId")) {
-
-            Member member = memberRepository.findOne(value);
-            if (member != null) {
-                System.out.println("member found " + member);
-                response.put("member", member);
-            }
-        } else if (StringUtils.equals(medium, "emailId")) {
-            Member member = memberRepository.findByEmail(value);
-            if (member != null) {
-                System.out.println("member found " + member);
-                response.put("member", member);
-            }
-        }
-
-        return response;
     }
 }
