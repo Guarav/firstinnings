@@ -9,16 +9,12 @@ firstinnings.controller('subscription-member-controller', ['$scope', 'httpServic
                     $scope.member = [response.member][0];
                     $scope.member.membershipDate = convertDateToString($scope.member.membershipDate);
                     $scope.member.birthDate = convertDateToString($scope.member.birthDate);
-                    $('#membership_id').val(member.memberId)
+                    $('#membership_id').val($scope.member.memberId)
                 } else {
                     $scope.member = null;
                     $scope.errorMessage = "No results found";
                 }
             })
-
-    };
-
-    $scope.selectMember = function (member) {
 
     };
 

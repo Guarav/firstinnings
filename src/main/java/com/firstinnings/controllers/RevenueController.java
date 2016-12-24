@@ -54,7 +54,7 @@ public class RevenueController {
                 break;
         }
 
-        List<Subscription> subscriptions = subscriptionRepository.findAllSubscriptionStartedAfterDate(date);
+        List<Subscription> subscriptions = subscriptionRepository.findBySubscriptionDateAfter(date);
         long totalRevenue = subscriptions.stream().mapToLong(Subscription::getAmount).sum();
 
         return new ModelAndView("GetRevenue",

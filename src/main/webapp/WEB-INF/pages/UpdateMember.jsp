@@ -25,7 +25,11 @@
         <jsp:include page="memberDetails.jsp" />
         <input id="membership_id" name="memberId" type="hidden"/>
 
-        <input id="submit_button" type="submit" value="Renew" style="font-size: 100%"/>
+        <br/>
+        <br/>
+        <jsp:include page="elements/button.jsp">
+            <jsp:param name="text" value="Save & Continue" />
+        </jsp:include>
 
     </div>
 

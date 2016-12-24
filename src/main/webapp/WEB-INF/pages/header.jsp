@@ -39,6 +39,6 @@
 
 <body ng-app="firstinnings">
 
-<jsp:include page="message.jsp"/>
+<jsp:include page="elements/message.jsp"/>
 
 
