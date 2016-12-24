@@ -53,6 +53,7 @@ public class SubscribeMemberController {
      * Handles renew member submit.
      * @return
      */
+    @SuppressWarnings("unchecked")
     @RequestMapping(method = RequestMethod.POST, value = "/subscribeMember")
     public ModelAndView renewMemberSubmit(HttpServletRequest request) {
 

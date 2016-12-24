@@ -23,6 +23,23 @@ body {
     border-radius: 10px;
 }
 
+.role {
+    vertical-align: text-bottom;
+    width: 250px;
+    text-align: center;
+    padding-top: 34px;
+    float: left;
+    height: 100px;
+    margin-left: 100px;
+    background-color: darkgrey;
+    color: #000000;
+    font-style: oblique;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-bottom: 100px;
+}
+
 .Enquiry {
     position: absolute;
     top: 180px;

@@ -3,6 +3,8 @@ package com.firstinnings.dto;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 /**
  * Created by kumrahul on 9/11/16.
  * It stores login information.
@@ -14,6 +16,8 @@ public class Login {
     public String  loginId;
 
     private String password;
+
+    private List<Role> roles;
 
     public Login() {}
 

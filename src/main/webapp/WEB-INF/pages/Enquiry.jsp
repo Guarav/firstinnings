@@ -46,7 +46,10 @@
     </div>
 
     <br />
-    <input id="submit_button" type="submit" value="Add" style="font-size: 100%"/>
+    <br />
+    <jsp:include page="elements/button.jsp">
+        <jsp:param name="text" value="Save & Continue" />
+    </jsp:include>
 </form>
 
 <a href="/home" class="button">Home</a>
