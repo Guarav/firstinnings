@@ -1,5 +1,7 @@
 package com.firstinnings;
 
+import com.firstinnings.dto.Role;
+
 import java.util.List;
 
 /**
@@ -12,7 +14,7 @@ public class RequestContext {
 
     private String       fullName;
 
-    private List<String> roles;
+    private List<Role> roles;
 
     private String       userId;
 
@@ -40,11 +42,11 @@ public class RequestContext {
         this.fullName = fullName;
     }
 
-    public List<String> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<String> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 

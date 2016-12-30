@@ -5,6 +5,14 @@
 
 	<display-name>FirstInnings MVC Application</display-name>
 
+    <!-- To make spring aware of filters http://forum.spring.io/forum/spring-projects/container/52816-autowiring-the-servlet-filter -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/mvc-dispatcher-servlet.xml
+        </param-value>
+    </context-param>
+
     <!-- Filters -->
 
 
@@ -16,10 +24,17 @@
         <filter-name>authenticationFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <filter>
         <filter-name>requestContextInitializationFilter</filter-name>
         <filter-class>com.firstinnings.filters.RequestContextInitializationFilter</filter-class>
+        <!--<init-param>-->
+            <!--<param-name>contextConfigLocation</param-name>-->
+            <!--<param-value>classpath:/</param-value>-->
+        <!--</init-param>-->
     </filter>
     <filter-mapping>
         <filter-name>requestContextInitializationFilter</filter-name>

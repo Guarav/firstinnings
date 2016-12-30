@@ -21,8 +21,9 @@ public class Login {
 
     public Login() {}
 
-    public Login(final String loginId, final String lastName) {
+    public Login(final String loginId, final String lastName, List<Role> userRoles) {
         this.loginId = loginId;
         this.password = lastName;
+        this.roles = userRoles;
     }
 }

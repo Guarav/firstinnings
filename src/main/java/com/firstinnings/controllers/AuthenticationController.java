@@ -1,7 +1,6 @@
 package com.firstinnings.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.firstinnings.Constants;
 import com.firstinnings.dto.Login;
+import com.firstinnings.dto.Role;
 import com.firstinnings.repositories.LoginRepository;
 
 /**
@@ -63,7 +63,7 @@ public class AuthenticationController {
         if (login != null && StringUtils.equals(pass, login.getPassword())) {
 
             HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("userId", "1");
+            httpSession.setAttribute("userId", name);
 
             response.sendRedirect("/home");
 
@@ -89,7 +89,15 @@ public class AuthenticationController {
 
         // Below line is just to have data into DB. Need to come up with plan location of DB. As
         // this comes when local server came up. At this time DB is empty.
-        userPassData.forEach((username, password) -> loginRepository.save(new Login(username, password)));
+        List<Role> userRoles = Arrays.asList(
+                new Role(Role.RoleName.enquiry, "Enquiry"),
+                new Role(Role.RoleName.defaulters, "Defaulters"),
+                new Role(Role.RoleName.addAMember, "Add a member"),
+                new Role(Role.RoleName.updateMember, "Update member details"),
+                new Role(Role.RoleName.subscribeMember, "Add Subscription"),
+                new Role(Role.RoleName.getRevenue, "Get Revenue")
+        );
+        userPassData.forEach((username, password) -> loginRepository.save(new Login(username, password, userRoles)));
 
         // see if we already authenticated.
         HttpSession httpSession1 = request.getSession();

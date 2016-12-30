@@ -1,21 +1,30 @@
 package com.firstinnings.filters;
 
 import java.io.IOException;
-import java.util.Arrays;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
 import com.firstinnings.RequestContext;
+import com.firstinnings.dto.Login;
+import com.firstinnings.repositories.LoginRepository;
 
 /**
  * This filter is responsible for populating the request context of the user logged in. This filter
  * will run after the authentication filter. Created by poplig on 9/11/16.
  */
 public class RequestContextInitializationFilter extends AbstractFilter {
+
+    @Autowired
+    private LoginRepository loginRepository;
+
+    public void init(FilterConfig filterConfig) throws ServletException {
+        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
+                filterConfig.getServletContext());
+    }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -36,8 +45,9 @@ public class RequestContextInitializationFilter extends AbstractFilter {
 
             // Get user details on the basis of user Id.
             String userId = requestContext.getUserId();
-            requestContext.setFullName("Gaurav Popli");
-            requestContext.setRoles(Arrays.asList("all"));
+            Login login = loginRepository.findOne(userId);
+
+            requestContext.setRoles(login.getRoles());
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

@@ -10,8 +10,19 @@ import lombok.Getter;
 @AllArgsConstructor
 public class Role {
 
-    private String name;
+    private RoleName name;
 
     private String displayText;
+
+    public static enum RoleName {
+
+        enquiry,
+        defaulters,
+        addAMember,
+        updateMember,
+        subscribeMember,
+        getRevenue
+
+    }
 
 }
