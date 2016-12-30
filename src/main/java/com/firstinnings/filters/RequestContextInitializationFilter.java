@@ -48,6 +48,8 @@ public class RequestContextInitializationFilter extends AbstractFilter {
             Login login = loginRepository.findOne(userId);
 
             requestContext.setRoles(login.getRoles());
+            String servletPath = httpServletRequest.getServletPath();
+            requestContext.setPageType(servletPath.substring(1, servletPath.length()));
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

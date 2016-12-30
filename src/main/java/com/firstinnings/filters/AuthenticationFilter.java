@@ -1,6 +1,6 @@
 package com.firstinnings.filters;
 
-import java.io.IOException;
+import com.firstinnings.RequestContext;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -9,8 +9,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.firstinnings.RequestContext;
+import java.io.IOException;
 
 /**
  * Authentication filter that runs on every request and depending on whether the user is valid or

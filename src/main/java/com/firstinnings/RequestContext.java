@@ -18,6 +18,16 @@ public class RequestContext {
 
     private String       userId;
 
+    private String pageType;
+
+    public String getPageType() {
+        return pageType;
+    }
+
+    public void setPageType(String pageType) {
+        this.pageType = pageType;
+    }
+
     public String getUserId() {
         return userId;
     }
@@ -57,6 +67,7 @@ public class RequestContext {
                 ", fullName='" + fullName + '\'' +
                 ", roles=" + roles +
                 ", userId='" + userId + '\'' +
+                ", pageType='" + pageType + '\'' +
                 '}';
     }
 }

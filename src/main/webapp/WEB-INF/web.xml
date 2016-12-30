@@ -31,13 +31,18 @@
     <filter>
         <filter-name>requestContextInitializationFilter</filter-name>
         <filter-class>com.firstinnings.filters.RequestContextInitializationFilter</filter-class>
-        <!--<init-param>-->
-            <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value>classpath:/</param-value>-->
-        <!--</init-param>-->
     </filter>
     <filter-mapping>
         <filter-name>requestContextInitializationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>pageAuthorizationFilter</filter-name>
+        <filter-class>com.firstinnings.filters.PageAuthorizationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>pageAuthorizationFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 

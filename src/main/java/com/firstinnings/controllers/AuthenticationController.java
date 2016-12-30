@@ -94,8 +94,7 @@ public class AuthenticationController {
                 new Role(Role.RoleName.defaulters, "Defaulters"),
                 new Role(Role.RoleName.addAMember, "Add a member"),
                 new Role(Role.RoleName.updateMember, "Update member details"),
-                new Role(Role.RoleName.subscribeMember, "Add Subscription"),
-                new Role(Role.RoleName.getRevenue, "Get Revenue")
+                new Role(Role.RoleName.subscribeMember, "Add Subscription")
         );
         userPassData.forEach((username, password) -> loginRepository.save(new Login(username, password, userRoles)));
 
